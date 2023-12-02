@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <h4 class="header-title">Employee Calendar</h4> -->
+                        <div class='demo-app'>
+                            <div class='demo-app-sidebar'>
+                                <div class='demo-app-sidebar-section'>
+                                    <ul>
+                                        <li><b>Holidays : <span class="holiday"></span></b></li>
+                                        <li><b>Pending Leave: <span class="pendingLeave"></span></b></li>
+                                        <li><b>Approved Leave: <span class="approvedLeave"></span></b></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class='demo-app-main'>
+                                <full-calendar *ngIf='calendarVisible()' [options]='calendarOptions'></full-calendar>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

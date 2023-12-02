@@ -1,0 +1,68 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Balance Leave</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Balance Leave</a></li>
+                        <!-- <li class="breadcrumb-item active">Form</li> -->
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <p class="text-primary">#Balance Leaves</p>
+                <div class="text-muted">
+                    <div class="row">
+                        <div class="col-lg-4" *ngIf="users">
+                            <div class="d-flex align-items-start mt-3">
+                                <i class="ri-calendar-event-line h2 m-0 text-muted"></i>
+                                &nbsp; &nbsp;
+                                <div class="flex-1 overflow-hidden">
+                                    <label>Casual Leaves:</label>
+                                    <h5 class="mt-0 text-truncate">{{users.casualLeave}}</h5>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4" *ngIf="users">
+                            <div class="d-flex align-items-start mt-3">
+                                <i class="ri-calendar-event-line h2 m-0 text-muted"></i>
+                                &nbsp; &nbsp;
+                                <div class="flex-1 overflow-hidden">
+                                    <label>Sick Leaves:</label>
+
+                                    <h5 class="mt-0 text-truncate">{{ users.sickLeave }}</h5>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4" *ngIf="users">
+                            <div class="d-flex align-items-start mt-3">
+                                <i class="ri-calendar-event-line h2 m-0 text-muted"></i>
+                                &nbsp; &nbsp;
+                                <div class="flex-1 overflow-hidden">
+                                    <label>Others Leaves:</label>
+
+                                    <h5 class="mt-0 text-truncate">{{ users.othersLeave }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

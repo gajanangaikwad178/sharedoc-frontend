@@ -1,0 +1,40 @@
+<div *ngIf="showViewer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <h4 class="page-title">Employee Hierarchy</h4>
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Employee Hierarchy</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <div class="mb-2">
+                            </div>
+                            <div class="mb-2">
+                            </div>
+                            <div class="mb-2 row">
+
+                                <div>
+                                    <pdf-viewer [src]="filePathemp" [render-text]="true" [original-size]="false"
+                                        style="width: 900px; height: 400px">
+                                    </pdf-viewer>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

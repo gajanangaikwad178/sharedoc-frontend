@@ -1,0 +1,85 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+      <div class="col-12">
+        <div class="page-title-box">
+          <h4 class="page-title">Employee Hierarchy</h4>
+          <div class="page-title-right">
+            <ol class="breadcrumb m-0">
+              <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+              <li class="breadcrumb-item"><a href="javascript: void(0);">Upload Employee Hierarchy</a>
+              </li>
+              <li class="breadcrumb-item active">Employee Hierarchy</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end page title -->
+  
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <!-- cta -->
+                <div class="row">
+  
+  
+                  <div class="custom-accordion">
+                    <div class="mt-4">
+                      <!-- <h5 class="position-relative mb-0"><a href="#taskcollapse1" class="text-dark d-block"
+                          data-bs-toggle="collapse">Employee Hierarchy
+                        </a></h5> -->
+                      <div class="collapse show" id="taskcollapse1">
+                        <form name="employeeHierarchy" [formGroup]="employeeHierarchy">
+                          <div class="table-responsive mt-3">
+                            <table class="table table-centered table-nowrap table-borderless table-sm">
+                              <thead class="table-light">
+                                <tr class="">
+                                  <th scope="col">Employee Hierarchy file</th>
+                                  <th scope="col">Action</th>
+                                  <!-- <th scope="col">Action</th> -->
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <div class="file-input-container">
+                                      <input type="file" (change)="convertToBase64($event)" 
+                                        formControlName="file"  class="form-control" >
+  
+                                      <div *ngIf="myFile">
+                                        <textarea [(ngModel)]="myFile"  class="form-control" ></textarea>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <button type="submit" class="btn btn-primary"
+                                      (click)="submit(employeeHierarchy.value)"><i class="fa fa-upload"
+                                        aria-hidden="true"></i></button>
+                                    <span *ngIf="errorMessage" class="error-message">{{ errorMessage }}</span> &nbsp;
+  
+                                    <button class="btn btn-primary" (click)="deleteExitForm()"><i
+                                        class="fas fa-trash"></i></button>
+                                  </td>
+  
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

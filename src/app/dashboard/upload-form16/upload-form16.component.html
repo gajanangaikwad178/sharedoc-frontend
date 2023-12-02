@@ -1,0 +1,142 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Upload Form16</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Upload Form16</a></li>
+                        <li class="breadcrumb-item active">Form16</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="custom-accordion">
+                                    <div class="mt-4">
+                                        <!-- <h5 class="position-relative mb-0"><a href="#taskcollapse1"
+                                                class="text-dark d-block" data-bs-toggle="collapse">Form 16
+                                            </a></h5> -->
+                                        <div class="collapse show" id="taskcollapse1">
+                                            <form name="uploadform16" [formGroup]="uploadform16">
+                                                <div class="table-responsive mt-3">
+                                                    <div class="space-between-inputs-and-table">
+                                                        <input type="text" class="search-inputs"
+                                                            placeholder="Search Employee Name" #searchString
+                                                            (input)="search(searchString.value,'name')"style= "width:13%">
+                                                        <span style="margin: 0 10px;"></span>
+                                                        <input type="text" placeholder="Search User ID" #searchUserId
+                                                            (input)="search(searchUserId.value,'userID')"
+                                                            style= "width:13%">
+                                                    </div>
+                                                    <table
+                                                        class="table table-centered table-nowrap table-borderless table-sm">
+                                                        <thead class="table-light">
+                                                            <tr>
+                                                                <th scope="col">Sr.No.</th>
+                                                                <th scope="col">Employee_Name</th>
+                                                                <th scope="col">Employee_Id</th>
+                                                                <th scope="col">Select year <span
+                                                                        class="text-danger">*</span></th>
+                                                                <th scope="col"> Form 16 <span
+                                                                        class="text-danger">*</span></th>
+                                                                <th scope="col">Action</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <ng-container *ngFor="let user of users; let i = index">
+                                                                <tr>
+                                                                    <td>{{ i + 1 }}</td>
+                                                                    <td>{{ user.name }}</td>
+                                                                    <td>{{ user.userId }}</td>
+                                                                    <td>
+                                                                        <select #year class="form-control"
+                                                                            formControlName="year">
+                                                                            <option [ngValue]="null" disabled selected>
+                                                                                Year</option>
+                                                                            <option *ngFor="let year of years"
+                                                                                [value]="year">{{ year }} - {{year+1}}
+                                                                            </option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="file-input-container">
+                                                                            <input type="file"
+                                                                                (change)="convertToBase64($event)"
+                                                                                formControlName="file"
+                                                                                class="form-control">
+                                                                            <div *ngIf="myFile">
+                                                                                <textarea
+                                                                                    [(ngModel)]="myFile"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            (click)="submit(uploadform16.value, user)"><i
+                                                                                class="fas fa-upload"></i></button>
+                                                                        <span *ngIf="errorMessage"
+                                                                            class="error-message">{{ errorMessage
+                                                                            }}</span>
+                                                                        &nbsp;
+                                                                        <button class="btn btn-primary"
+                                                                            (click)="viewPdf(user.userId, year.value)"><i
+                                                                                class="fas fa-eye"></i></button>
+                                                                        &nbsp;
+                                                                        <button class="btn btn-primary"
+                                                                            (click)="deletePdf(user.userId, year.value)"
+                                                                            [disabled]="isDeleteDisabled"><i
+                                                                                class="fas fa-trash"></i></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-container>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div *ngIf="showViewer">
+                                                    <div style="width: 900px; height: 800px">
+                                                        <ngx-extended-pdf-viewer [src]="pdfUrlx"
+                                                            [useBrowserLocale]="true"></ngx-extended-pdf-viewer>
+                                                    </div>
+                                                </div>
+                                                <ng-template #content let-c="close" let-d="dismiss">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="modal-basic-title">Form 16</h4>
+                                                        <button type="button" class="btn-close" aria-label="Close"
+                                                            (click)="d('Cross click')"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div *ngIf="showPdf">
+                                                            <!-- <ngx-extended-pdf-viewer [src]="pdfUrlx" [useBrowserLocale]="true"></ngx-extended-pdf-viewer> -->
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-outline-dark"
+                                                            (click)="c('Save click')">Save</button>
+                                                    </div>
+                                                </ng-template>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

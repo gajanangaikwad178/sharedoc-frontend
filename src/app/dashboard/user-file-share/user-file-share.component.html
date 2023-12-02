@@ -1,0 +1,137 @@
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">User File Share</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li> -->
+                        <!-- <li class="breadcrumb-item"><a href="javascript: void(0);">Salary Slips</a></li> -->
+                        <li class="breadcrumb-item active">Upload File</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- cta -->
+                            <div class="row">
+                                <div class="custom-accordion">
+                                    <div class="mt-4">
+                                        <!-- <h4 class="position-relative mb-0"><a href="#taskcollapse1"
+                                                class="text-dark d-block" data-bs-toggle="collapse">User list
+                                            </a></h4> -->
+                                        <div class="collapse show" id="taskcollapse1">
+                                            <form [formGroup]="SalarySlips">
+                                                <div class="table-responsive mt-3">
+                                                    <table
+                                                        class="table table-centered table-nowrap table-borderless table-sm"
+                                                        style="margin-bottom: 00px;">
+                                                        <thead class="table-light">
+                                                            <tr class="">
+                                                                <th scope="col" class="col-sm-6"> File <span
+                                                                        class="text-danger">*</span></th>
+                                                                <th scope="col">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <ng-container>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="file-input-container"
+                                                                            style="width: 350px;">
+                                                                            <input type="file" class="form-control"
+                                                                                (change)="OnChangeFileField($event)"
+                                                                                formControlName="file" required>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            (click)="submitFile()">
+                                                                            <i class="fas fa-upload"></i></button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-container>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </form>
+                                            <br>
+                                            <br>
+                                            <form [formGroup]="uploadPermissionsForm">
+                                                <div class="table-responsive mt-3">
+                                                    <table
+                                                        class="table table-centered table-nowrap table-borderless table-sm"
+                                                        style="margin-bottom: 500px;">
+                                                        <thead class="table-light">
+                                                            <tr class="">
+                                                                <th scope="col">Sr.No.</th>
+                                                                <th scope="col">File Name</th>
+                                                                <th scope="col">Uploaded_By</th>
+                                                                <th scope="col">Select Employee</th>
+                                                                <th scope="col">View</th>
+                                                                <th scope="col">Print</th>
+                                                                <th scope="col">Download</th>
+                                                                <th scope="col">Expiry Date</th>
+                                                                <th scope="col">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <ng-container *ngFor="let user of users; let i = index">
+                                                                <tr>
+                                                                    <td>{{ i + 1 }}</td>
+                                                                    <td>{{ user.fileName}}</td>
+                                                                    <td>{{ user.uploadedBy }}</td>
+                                                                    <td><ng-multiselect-dropdown
+                                                                            [placeholder]="'custom placeholder'"
+                                                                            [settings]="dropdownSettings"
+                                                                            [data]="dropdownList"
+                                                                            formControlName="selectedItems"
+                                                                            (onSelect)="onItemSelect($event)">
+                                                                        </ng-multiselect-dropdown></td>
+
+                                                                        <td>
+                                                                            <input type="checkbox" name="viewCheckbox" formControlName="viewCheckbox" (change)="viewToggleCheckboxValue()">
+                                                                            <!-- <input type="checkbox" [checked]="user.view" (change)="viewToggleCheckboxValue()"/> -->
+                                                                          </td>
+                                                                          <td>
+                                                                            <input type="checkbox" name="printCheckbox" formControlName="printCheckbox" (change)="printToggleCheckboxValue()">
+                                                                          </td>
+                                                                          <td>
+                                                                            <input type="checkbox" name="downloadCheckbox" formControlName="downloadCheckbox" (change)="downloadToggleCheckboxValue()">
+                                                                          </td>
+
+                                                                    <td><input type="date" name="endDate"
+                                                                            parsley-trigger="change" 
+                                                                            id="exampleInputPassword1"
+                                                                            [min]="getTodayDate()"></td>
+                                                                    <td>
+                                                                        <button class="btn btn-primary"
+                                                                        class="btn btn-primary"
+                                                                        (click)="submitFilePermission(uploadPermissionsForm.value)">
+                                                                            Update
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-container>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

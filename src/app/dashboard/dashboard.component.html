@@ -1,0 +1,719 @@
+<!-- Begin page -->
+<div id="wrapper">
+
+    <!-- Topbar Start -->
+    <div class="navbar-custom">
+        <div class="container-fluid">
+            <ul class="list-unstyled topnav-menu float-end mb-0">
+                <li class="dropdown notification-list topbar-dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false">
+                        <i class="fe-bell noti-icon"></i>
+                        <span class="badge bg-danger rounded-circle noti-icon-badge">5</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end dropdown-lg">
+
+                        <!-- item-->
+                        <div class="dropdown-item noti-title">
+                            <h5 class="m-0">
+                                <span class="float-end">
+                                    <a href="#" class="text-dark">
+                                        <small>Clear All</small>
+                                    </a>
+                                </span>Notification
+                            </h5>
+                        </div>
+
+                        <div class="noti-scroll" data-simplebar>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-soft-warning text-warning">
+                                    <i class="mdi mdi-account-plus"></i>
+                                </div>
+                                <p class="notify-details">New user registered.
+                                    <small class="text-muted">5 hours ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-info">
+                                    <i class="mdi mdi-comment-account-outline"></i>
+                                </div>
+                                <p class="notify-details">Caleb Flakelar commented on Admin
+                                    <small class="text-muted">4 days ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-soft-warning text-warning">
+                                    <i class="mdi mdi-account-plus"></i>
+                                </div>
+                                <p class="notify-details">New user registered.
+                                    <small class="text-muted">8 hours ago</small>
+                                </p>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-info">
+                                    <i class="mdi mdi-comment-account-outline"></i>
+                                </div>
+                                <p class="notify-details">Sudhir Pings
+                                    <small class="text-muted">5 days ago</small>
+                                </p>
+                            </a>
+                        </div>
+
+                        <!-- All-->
+                        <a href="javascript:void(0);"
+                            class="dropdown-item text-center text-primary notify-item notify-all">
+                            View all
+                            <i class="fe-arrow-right"></i>
+                        </a>
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list topbar-dropdown">
+                    <!-- <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false"> -->
+                    <a #dropdownToggle class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="false" aria-expanded="false">
+                        <!-- <button (click)="openDropdown()"></button> -->
+
+                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                        <span class="pro-user-name ms-1">
+                            {{userId}}<i class="mdi mdi-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                        <!-- item-->
+                        <div class="dropdown-header noti-title">
+                            <h6 class="text-overflow m-0">Welcome </h6>
+                        </div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="ri-account-circle-line"></i>
+                            <span>My Account</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="ri-settings-3-line"></i>
+                            <span>Settings</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="ri-wallet-line"></i>
+                            <span>My Wallet <span class="badge bg-success float-end">3</span> </span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="ri-lock-line"></i>
+                            <span>Lock Screen</span>
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <!-- item-->
+                        <a routerLink="" class="dropdown-item notify-item">
+                            <i class="ri-logout-box-line" (click)="logout()"></i>
+                            <span>Logout</span>
+                        </a>
+
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list">
+                    <a href="javascript:void(0);" class="nav-link right-bar-toggle">
+                        <i class="fe-settings noti-icon"></i>
+                    </a>
+                </li>
+
+            </ul>
+
+            <!-- LOGO -->
+            <div class="logo-box">
+                <a href="index.html" class="logo logo-dark text-center">
+                    <span class="logo-sm">
+                        <img src="assets/images/logo-sm-dark.png" alt="" height="30">
+                        <!-- <span class="logo-lg-text-light">HRMS</span> -->
+                    </span>
+                    <span class="logo-lg">
+                        <img src="assets/images/logo-dark.png" alt="" height="45">
+                        <!-- <span class="logo-lg-text-light">M</span> -->
+                    </span>
+                </a>
+
+                <a href="index.html" class="logo fossgen_logo text-center">
+                    <span class="logo-sm">
+                        <img src="assets/images/fossgen_icon.png" alt="" height="30">
+                    </span>
+                    <span class="logo-lg">
+                        <img src="assets/images/fossgen_logo.png" alt="" height="45">
+                    </span>
+                </a>
+            </div>
+
+            <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+                <li>
+                    <button class="button-menu-mobile" (click)="toggleSidebar()">
+                        <i class="fe-menu"></i>
+                    </button>
+                </li>
+
+                <li>
+                    <!-- Mobile menu toggle (Horizontal Layout)-->
+                    <a class="navbar-toggle nav-link" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </li>
+
+                <li class="dropdown d-none d-xl-block">
+                    <!-- <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                        aria-haspopup="false" aria-expanded="false">
+                        Create New
+                        <i class="mdi mdi-chevron-down"></i>
+                    </a> -->
+                    <div class="dropdown-menu">
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <i class="fe-briefcase me-1"></i>
+                            <span>New Projects</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <i class="fe-user me-1"></i>
+                            <span>Create Users</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <i class="fe-bar-chart-line- me-1"></i>
+                            <span>Revenue Report</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <i class="fe-settings me-1"></i>
+                            <span>Settings</span>
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item">
+                            <i class="fe-headphones me-1"></i>
+                            <span>Help & Support</span>
+                        </a>
+
+                    </div>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- end Topbar -->
+
+    <!-- ========== Left Sidebar Start  ========== -->
+    <div class="left-side-menu">
+
+        <!-- LOGO -->
+        <div class="logo-box">
+            <a href="index.html" class="logo logo-dark text-center">
+                <span class="logo-sm">
+                    <img src="assets/images/logo-sm-dark.png" alt="" height="30">
+                    <!-- <span class="logo-lg-text-light">HRMS</span> -->
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/logo-dark.png" alt="" height="45">
+                    <!-- <span class="logo-lg-text-light">M</span> -->
+                </span>
+            </a>
+
+            <a href="index.html" class="logo fossgen_logo text-center">
+                <span class="logo-sm">
+                    <img src="assets/images/fossgen_icon.png" alt="" height="30">
+                </span>
+                <span class="logo-lg">
+                    <img src="assets/images/fossgen_logo.png" alt="" height="45">
+                </span>
+            </a>
+        </div>
+
+        <div class="h-100" data-simplebar>
+
+            <!-- User box -->
+            <div class="user-box text-center">
+                <img src="assets/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme"
+                    class="rounded-circle avatar-md">
+                <div class="dropdown">
+                    <a href="#" class="text-reset dropdown-toggle h5 mt-2 mb-1 d-block" data-bs-toggle="dropdown">Nik
+                        Patel</a>
+                    <div class="dropdown-menu user-pro-dropdown">
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fe-user me-1"></i>
+                            <span>My Account</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fe-settings me-1"></i>
+                            <span>Settings</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fe-lock me-1"></i>
+                            <span>Lock Screen</span>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="fe-log-out me-1"></i>
+                            <span>Logout</span>
+                        </a>
+
+                    </div>
+                </div>
+                <p class="text-reset">Admin Head</p>
+            </div>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+
+                <ul id="side-menu">
+                    <li class="menu-title mt-2">Menu</li>
+                    <!-- ---------------------------------------------------------------------------------------------------- -->
+                    <!-- HUMAN RESOURCE ACTIVITY  -->
+                    <li *ngIf="isAdmin()">
+                        <!-- <a href="javascript:void(0);" (click)="HRAtoggleCollapse('HRA')" data-bs-toggle="collapse"
+                            aria-expanded="false" aria-controls="HRA">
+                            <i class="fas fa-user"></i>
+                            <span> HR Activity</span>
+                            <span class="menu-arrow" [ngClass]="{'active': HRAisCollapsed('HRA')}"></span>
+                        </a> -->
+                        <div class="collapse" id="HRA" [ngClass]="{'collapse': isCollapsed('HRA')}">
+                            <ul class="nav-second-level">
+                                <li *ngIf="isAdmin()">
+                                    <!-- <a routerLink="/dashboard/upload-holidays"
+                                        (click)="toggleCollapse('createholiday')">
+                                        <i class="ri-calendar-line"></i>
+                                        Create Holiday <span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('createholiday')}"></span>
+                                    </a> -->
+                                    <!-- <a routerLink="/dashboard/add-leaves" (click)="toggleCollapse('addleaves')">
+                                        <i class="ri-file-add-line"></i>
+                                        Add Leaves<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('addleaves')}"></span>
+                                    </a> -->
+                                    <!-- <a routerLink="/dashboard/upload-form16" (click)="toggleCollapse('form16')">
+                                        <i class="ri-file-text-line"></i>
+                                        Form 16<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('form16')}"></span>
+                                    </a> -->
+                                    <!-- <a routerLink="/dashboard/upload-Investment-declaration-admin"
+                                        (click)="toggleCollapse('investmentDeclaretion')">
+                                        <i class="ri-money-dollar-circle-line"></i>
+                                        Investment &nbsp; Declaretion<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('investmentDeclaretion')}"></span>
+                                    </a> -->
+                                    <!-- <a routerLink="/dashboard/upload-employee-hierarchy"
+                                        (click)="toggleCollapse('employeeHierarchies')">
+                                        <i class="fas fa-sitemap"></i>
+                                        Upload Employee Hierarchies<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('employeeHierarchies')}"></span>
+                                    </a> -->
+                                    <!-- <a routerLink="/dashboard/" (click)="toggleCollapse('employeeHierarchies')">
+                                        Single Employee Policy Show<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('employeeHierarchies')}"></span>
+                                    </a> -->
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- EMPLOYEE ACTIVITY -->
+                    <!-- <li *ngIf="isAdmin()">
+                        <a href="javascript:void(0);" (click)="EAtoggleCollapse('EA')" data-bs-toggle="collapse"
+                            aria-expanded="false" aria-controls="EA">
+                            <i class="fas fa-users"></i>
+                            <span> Employees Activities</span>
+                            <span class="menu-arrow" [ngClass]="{'active': EAisCollapsed('EA')}"></span>
+                        </a>
+                        <div class="collapse" id="EA" [ngClass]="{'collapse': isCollapsed('EA')}">
+                            <ul class="nav-second-level">
+                                <li *ngIf="isAdmin()">
+                                    <a routerLink="/dashboard/bulk-employee-registration"
+                                        (click)="toggleCollapse('bulkEmpRegistration')">
+                                        <i class="fas fa-user-plus"></i>
+                                        Employee &nbsp; Registation<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('bulkEmpRegistration')}"></span>
+                                    </a>
+                                    <a routerLink="/dashboard/emp-joining-form"
+                                        (click)="toggleCollapse('empJoiningForm')">
+                                        <i class="ri-user-add-line"></i>
+                                        Employee Joining<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('empJoiningForm')}"></span>
+                                    </a>
+                                    <a routerLink="/dashboard/exit-form-by-user" (click)="toggleCollapse('exitForm')">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Exit Form<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('exitForm')}"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> -->
+
+                    <!-- Payroll MAnagement -->
+
+                    <!-- <li *ngIf="isAdmin()">
+                        <a href="javascript:void(0);" (click)="PMtoggleCollapse('PM')" data-bs-toggle="collapse"
+                            aria-expanded="false" aria-controls="PM">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span> Payroll Management</span>
+                            <span class="menu-arrow" [ngClass]="{'active': PMisCollapsed('PM')}"></span>
+                        </a>
+                        <div class="collapse" id="PM" [ngClass]="{'collapse': isCollapsed('PM')}">
+                            <ul class="nav-second-level">
+                                <li *ngIf="isAdmin()">
+                                    <a routerLink="/dashboard/upload-salary-slips"
+                                        (click)="toggleCollapse('bulkEmpRegistration')">
+                                        <i class="ri-file-upload-line"></i>
+                                        Salary Slip
+                                        <span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('bulkEmpRegistration')}"></span>
+                                    </a>
+                                </li>
+                                <li *ngIf="isAdmin()">
+                                    <a routerLink="/dashboard/register-candidate">
+                                        <i class="ri-user-add-line"></i>
+                                        Register Candidate<span class="menu-arrow"></span></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> -->
+
+                    <!-- ORGANATION DETAILS -->
+                    <li *ngIf="isEmployee()">
+                        <!-- <a href="javascript:void(0);" (click)="OrgDtlstoggleCollapse('ORGDTLS')"
+                            data-bs-toggle="collapse" aria-expanded="false" aria-controls="ORGDTLS">
+                            <i class="fas fa-building"></i>
+                            <span> Organization Details</span>
+                            <span class="menu-arrow" [ngClass]="{'active': OrgDtlsisCollapsed('ORGDTLS')}"></span>
+                        </a> -->
+                        <div class="collapse" id="ORGDTLS" [ngClass]="{'collapse': isCollapsed('ORGDTLS')}">
+                            <ul class="nav-second-level">
+                                <li *ngIf="isEmployee()">
+                                    <!-- <a routerLink="/dashboard/employee-hierarchy"
+                                        (click)="toggleCollapse('orgHierarchies')">
+                                        <i class="fas fa-sitemap"></i>
+                                        Organization Hierarchies
+                                        <span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('orgHierarchies')}"></span>
+                                    </a> -->
+                                    <!-- <a routerLink="/dashboard/" (click)="toggleCollapse('comPolicy')">
+                                        <i class="fas fa-user-tie"></i>
+                                        HR Policy
+                                        <span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('comPolicy')}"></span>
+                                    </a> -->
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- EMPLOYEE ACTIVITY -->
+                    <!-- <li *ngIf="isEmployee()">
+                        <a routerLink="/dashboard/" (click)="EAtoggleCollapse('EA')" data-bs-toggle="collapse"
+                            aria-expanded="false" aria-controls="EA">
+                            <i class="fas fa-users"></i>
+                            <span> Employee Activities</span>
+                            <span class="menu-arrow" [ngClass]="{'active': EAisCollapsed('EA')}"></span>
+                        </a>
+                        <div class="collapse" id="EA" [ngClass]="{'collapse': isCollapsed('EA')}">
+                            <ul class="nav-second-level">
+                                <li *ngIf="isEmployee()">
+                                    <a routerLink="/dashboard/apply-leave" (click)="toggleCollapse('applyLeave')">
+                                        <i class="ri-calendar-check-line"></i>
+                                        Apply Leave<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('applyLeave')}"></span>
+                                    </a>
+                                    <a routerLink="/dashboard/balance-leave" (click)="toggleCollapse('balanceLeave')">
+                                        <i class="ri-timer-line"></i>
+                                        Check Balance Leave<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('balanceLeave')}"></span>
+                                    </a>
+
+                                    <a routerLink="/dashboard/leave-status" (click)="toggleCollapse('leaveStatus')">
+                                        <i class="ri-file-list-line"></i>
+                                        Check Leave Status<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('leaveStatus')}"></span>
+                                    </a>
+
+                                    <a routerLink="/dashboard/form16-for-user" (click)="toggleCollapse('form16')">
+                                        <i class="ri-file-download-line"></i>
+                                        Download Form 16<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('form16')}"></span>
+                                    </a>
+
+                                    <a routerLink="/dashboard/upcoming-holiday" (click)="toggleCollapse('holidayList')">
+                                        <i class="ri-calendar-line"></i>
+                                        Holiday Calender List<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('holidayList')}"></span>
+                                    </a>
+
+                                    <a routerLink="/dashboard/payment-slip" (click)="toggleCollapse('salarySlip')">
+                                        <i class="fas fa-receipt"></i>
+                                        Download Salary Slip<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('salarySlip')}"></span>
+                                    </a>
+                                    <a routerLink="/dashboard/investment-declaration"
+                                        (click)="toggleCollapse('investmentDeclaretion')">
+                                        <i class="ri-money-dollar-circle-line"></i>
+                                        Investment &nbsp; Declaretion<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('investmentDeclaretion')}"></span>
+                                    </a>
+
+                                    <a routerLink="/dashboard/exit-form" (click)="toggleCollapse('exitForm')">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        Exit Form<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('exitForm')}"></span>
+                                    </a>
+
+                                    <a routerLink="/dashboard/user-personal-details"
+                                        (click)="toggleCollapse('empProfile')">
+                                        <i class="ri-user-line"></i>
+                                        Employee Profile<span class="menu-arrow"
+                                            [ngClass]="{'active': isCollapsed('empProfile')}"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li> -->
+
+                    <!-- <li *ngIf="isAdmin()">
+                        <a routerLink="/dashboard/employee-leave">
+                            <i class="far fa-calendar-alt"></i>
+                            <span> Employee Leaves</span>
+                        </a>
+                    </li> -->
+
+                    <!-- <li *ngIf="isAdmin()">
+                        <a routerLink="/dashboard/add-task">
+                            <i class="ri-calendar-line"></i>
+                            <span> Add Task</span>
+                        </a>
+                    </li> -->
+
+                    <!-- <li *ngIf="isEmployee()">
+                        <a routerLink="/dashboard/user-add-task">
+                            <i class="ri-calendar-line"></i>
+                            <span> User Add Task</span>
+                        </a>
+                    </li> -->
+
+                    <!-- <li *ngIf="isSuperAdmin()">
+                        <a routerLink="/dashboard/admin-registration">
+                            <i class="fas fa-users"></i>
+                            <span> User Registration</span>
+                        </a>
+                    </li>
+                    <li *ngIf="isSuperAdmin()">
+                        <a routerLink="/dashboard/admin-list">
+                            <i class="fas fa-users"></i>
+                            <span> Admin List</span>
+                        </a>
+                    </li>
+                    <li *ngIf="isSuperAdmin()">
+                        <a routerLink="/dashboard/user-list">
+                            <i class="fas fa-users"></i>
+                            <span> User List</span>
+                        </a>
+                    </li>
+                    <li *ngIf="isSuperAdmin() && uploadForAdmin()">
+                        <a routerLink="/dashboard/admin-file-upload">
+                            <i class="fas fa-users"></i>
+                            <span> File Upload</span>
+                        </a>
+                    </li>
+                    
+                    <li *ngIf="isADMIN() && uploadForAdmin()">
+                        <a routerLink="/dashboard/admin-file-upload">
+                            <i class="fas fa-users"></i>
+                            <span> File Upload</span>
+                        </a>
+                    </li>
+
+                    <li *ngIf="isADMIN() && downloadForAdmin()">
+                        <a routerLink="/dashboard/file-download">
+                            <i class="fas fa-users"></i>
+                            <span> View Documents</span>
+                        </a>
+                    </li>
+
+                    <li *ngIf="isADMIN() && viewForAdmin()">
+                        <a routerLink="/dashboard/file-download">
+                            <i class="fas fa-users"></i>
+                            <span> Documents</span>
+                        </a>
+                    </li>
+                    
+                    <li *ngIf="isUser() && uploadForAdmin()">
+                        <a routerLink="/dashboard/admin-file-upload">
+                            <i class="fas fa-users"></i>
+                            <span> File Upload</span>
+                        </a>
+                    </li>
+
+                    <li *ngIf="isUser() && downloadForAdmin()">
+                        <a routerLink="/dashboard/file-download">
+                            <i class="fas fa-users"></i>
+                            <span> View Documents</span>
+                        </a>
+                    </li> -->
+                    
+                    <li *ngIf="isUser()">
+                        <a routerLink="/dashboard/file-share">
+                            <i class="fas fa-file-upload"></i>
+                            <span> Documents Upload</span>
+                        </a>
+                    </li>
+                    <li *ngIf="isUser()">
+                        <a routerLink="/dashboard/user-file-download">
+                            <i class="fas fa-file"></i>
+                            <span> Documents List</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- End Sidebar -->
+            <div class="clearfix"></div>
+        </div>
+        <!-- Sidebar -left -->
+    </div>
+    <!-- Left Sidebar End -->
+
+    <!-- ============================================================== -->
+    <!-- Start Page Content here -->
+    <!-- ============================================================== -->
+
+    <div class="content-page">
+        <div class="content">
+
+            <!-- Start Content-->
+            <router-outlet></router-outlet>
+
+            <div *ngIf="isLoginBox">
+                <div class="content" *ngIf="signIn && !isAdmin()">
+                    <div class="card" style="width: 12rem; margin-top: px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ today| date:'EEEE dd-MM-yy' }}</h5>
+                            <p class="card-text"> {{ time | date: 'hh:mm:ss a' }}</p>
+                            <a><button style="padding: 5px 29px;" (click)="signButton(SignName)"
+                                    class="btn btn-primary">{{SignName}}</button>
+                                <br>
+                                <br>
+                                <button (click)="getViewSwipe(ViewSwipe)" class="btn btn-primary"
+                                    style="padding: 5px 19px;">{{ViewSwipe}}</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped" *ngIf="isheaders">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr no</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Sign in</th>
+                        <th scope="col">Sign out</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr *ngFor="let item of obj; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{item.date}}</td>
+                        <td>{{item.inTime}}</td>
+                        <td>{{item.outTime}}</td>
+                    </tr>
+                </thead>
+            </table>
+        </div> <!-- content -->
+
+        <!-- Footer Start -->
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- <div class="col-md-6">
+                        <script>document.write(new Date().getFullYear())</script> &copy; <a >HRMS</a>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-end footer-links d-none d-sm-block">
+                            <a href="javascript:void(0);">About Us</a>
+                            <a href="javascript:void(0);">Help</a>
+                            <a href="javascript:void(0);">Contact Us</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </footer>
+        <!-- end Footer -->
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- End Page content -->
+    <!-- ============================================================== -->
+
+
+</div>
+<!-- END wrapper -->
+
+<!-- Right Sidebar -->
+<div class="right-bar">
+    <div data-simplebar class="h-100">
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-bordered nav-justified">
+            <li class="nav-item">
+                <a class="nav-link py-2 active" data-bs-toggle="tab" href="#settings-tab" role="tab">
+                    <i class="mdi mdi-cog-outline d-block font-22 my-1"></i>
+                </a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content pt-0">
+            <div class="tab-pane active" id="settings-tab" role="tabpanel">
+                <div class="p-3">
+                    <div>
+                        <strong>Customize </strong> the overall color scheme, sidebar menu, etc.
+                    </div>
+                    <!-- Topbar -->
+                    <div class="d-grid mt-4">
+                        <a href="#" class="btn btn-primary"><i class="mdi mdi-basket me-1"></i> Upgrade Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- end slimscroll-menu-->
+</div>
+<!-- /Right-bar -->
+
+<!-- Right bar overlay-->
+<div class="rightbar-overlay"></div>

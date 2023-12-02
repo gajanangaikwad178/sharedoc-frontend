@@ -1,0 +1,122 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Add Leaves Form</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Add Leaves</a></li>
+                        <li class="breadcrumb-item active">Add Leaves Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <form action="#" [formGroup]="leaveForm" (ngSubmit)="addLeaves()"  class="parsley-examples">
+                        <div class="mb-2">
+                            <label for="userName" class="form-label">Select Employee<span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control" formControlName="userId" class="form-control">
+                                <option [ngValue]="null" disabled selected>Select Employee</option>
+                                <option *ngFor="let user of users" [ngValue]="user['userId']">{{ user.name }}</option>
+                            </select>
+
+                            <div style="text-align: center;" *ngIf="leaveForm.controls['userId'].value"
+                                class="form-control div-item">
+                                <label>Selected User ID: {{ leaveForm.controls['userId'].value }}</label>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="casualLeave" class="form-label"> Casual Leaves<span
+                                    class="text-danger">*</span></label>
+                            <input type="number" name="casualLeave" parsley-trigger="change" required
+                                placeholder="Casual Leaves" class="form-control" id="casualLeave"
+                                formControlName="casualLeave" min="0">
+                            <div class="form-group forminput"
+                                *ngIf="leaveForm.controls['casualLeave'].invalid && leaveForm.controls['casualLeave'].touched">
+                                <div class="text-danger"
+                                    *ngIf="leaveForm.controls['casualLeave'].errors?.['required']">Casual Leaves is
+                                    required.
+                                </div>
+                                <div class="text-danger"
+            *ngIf="leaveForm.controls['casualLeave'].hasError('min') && leaveForm.controls['casualLeave'].touched">
+            Casual Leaves cannot be negative.
+        </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="sickLeave" class="form-label"> Sick Leaves<span
+                                    class="text-danger">*</span></label>
+                            <input type="number" name="sickLeave" parsley-trigger="change" required
+                                placeholder="Sick Leaves" class="form-control" id="sickLeave"
+                                formControlName="sickLeave" min="0">
+                            <div class="form-group forminput"
+                                *ngIf="leaveForm.controls['sickLeave'].invalid && leaveForm.controls['sickLeave'].touched">
+                                <div class="text-danger"
+                                    *ngIf="leaveForm.controls['casualLeave'].errors?.['required']">Sick Leaves is
+                                    required.
+                                </div>
+                                <div class="text-danger"
+                                    *ngIf="leaveForm.controls['sickLeave'].hasError('min') && leaveForm.controls['sickLeave'].touched">
+                                    Sick Leaves cannot be negative.</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="otherLeave" class="form-label"> Other Leaves<span
+                                    class="text-danger">*</span></label>
+                            <input type="number" name="otherLeave" parsley-trigger="change" required
+                                placeholder="Other Leaves" class="form-control" id="otherLeave"
+                                formControlName="otherLeave" min="0">
+                            <div class="form-group forminput"
+                                *ngIf="leaveForm.controls['otherLeave'].invalid && leaveForm.controls['otherLeave'].touched">
+                                <div class="text-danger"
+                                    *ngIf="leaveForm.controls['casualLeave'].errors?.['required']">Other Leaves is
+                                    required.
+                                </div>
+                                <div class="text-danger"
+                                    *ngIf="leaveForm.controls['otherLeave'].hasError('min') && leaveForm.controls['otherLeave'].touched">
+                                    Other Leaves cannot be negative.</div>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-2 row">
+                            <div class="col-8 offset-5">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light me-1"
+                                    [disabled]="leaveForm.invalid">
+                                    submit
+                                </button>
+                                <button type="reset" class="btn btn-secondary waves-effect" >
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- end col -->

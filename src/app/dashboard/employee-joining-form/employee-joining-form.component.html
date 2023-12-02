@@ -1,0 +1,744 @@
+<!-- <div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Employee Joining Form</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Employee Joining Form</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="left_margin">
+                        <ul class="nav nav-pills nav-justified form-wizard-header mb-2">
+                            <li class="nav-item">
+                                <a href="#Employee Personal Details" data-bs-toggle="tab" data-toggle="tab"
+                                    class="nav-link" (click)="showTab('tab1')" [class.active]="activeTab === 'tab1'">
+                                   
+                                    <span class="ri-shield-user-line"></span>&nbsp;
+                                    <span class="d-none d-sm-inline">Employee Personal Details</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#Upload All Certificate" data-bs-toggle="tab" data-toggle="tab"
+                                    class="nav-link" (click)="showTab('tab2')" [class.active]="activeTab === 'tab2'">
+                                    
+                                    <span class="fa fa-upload" aria-hidden="true"></span>&nbsp;
+                                    <span class="d-none d-sm-inline">Upload All Certificate</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+
+                    <div class="tab-content">
+
+                        <div *ngIf="activeTab === 'tab1'">
+
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <form [formGroup]="employeeForm" class="parsley-examples">
+                                        <div class="mb-2">
+                                            <label for="employeeId" class="form-label">Employee Id<span
+                                                    class="text-danger">*</span></label>
+
+                                            <input type="text" name="nick" parsley-trigger="change"
+                                                formControlName="employeeId" id="employeeId"
+                                                placeholder="Enter user name" required>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['employeeId'].touched && profileVal['employeeId'].invalid">
+                                                <span *ngIf="profileVal['employeeId'].hasError('required')">employeeId
+                                                    is
+                                                    required</span>
+                                                <span *ngIf="profileVal['employeeId'].hasError('pattern')">Enter valid
+                                                    employeeId</span>
+                                            </span>
+                                        </div>
+
+
+
+                                        <div>
+                                            <label for="fullName" class="form-label">Full Name<span class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <input type="text" id="fullName" formControlName="fullName"
+                                                placeholder="FullName" required>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['fullName'].touched && profileVal['fullName'].invalid">
+                                                <span *ngIf="profileVal['fullName'].hasError('required')">Full Name is
+                                                    required</span>
+                                                <span *ngIf="profileVal['fullName'].hasError('minlength')">Full Name
+                                                    must be
+                                                    at least 8
+                                                    characters</span>
+                                                <span *ngIf="profileVal['fullName'].hasError('pattern')">FullName
+                                                    contains
+                                                    invalid characters
+                                                </span>
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <label for="email" class="form-label">Email<span class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <input type="emailId" id="emailId" formControlName="emailId"
+                                                placeholder="EmailId" required>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['emailId'].touched && profileVal['emailId'].invalid">
+                                                <span *ngIf="profileVal['emailId'].hasError('required')">Email is
+                                                    required</span>
+                                                <span *ngIf="profileVal['emailId'].hasError('pattern')">Enter valid
+                                                    email</span>
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <label for="phone" class="form-label">Mobile Number<span class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <input type="mobileNumber" id="mobileNumber" formControlName="mobileNumber"
+                                                placeholder="Mobile Number" required>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['mobileNumber'].touched && profileVal['mobileNumber'].invalid">
+                                                <span *ngIf="profileVal['mobileNumber'].hasError('required')">Contact
+                                                    number
+                                                    is required</span>
+                                                <span *ngIf="profileVal['mobileNumber'].hasError('pattern')">Enter valid
+                                                    numbers</span>
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <label for="dob" class="form-label">Date of Birth<span class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <input type="date" id="dateOfBirth" formControlName="dateOfBirth" required>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['dateOfBirth'].touched && profileVal['dateOfBirth'].invalid">
+                                                <span *ngIf="profileVal['dateOfBirth'].hasError('required')">Date of
+                                                    birth
+                                                    is required</span>
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <label for="gender" class="form-label">Gender<span class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <select id="gender" formControlName="gender" required>
+                                                <option value="" disabled>Select gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['gender'].touched && profileVal['gender'].invalid">
+                                                <span *ngIf="profileVal['gender'].hasError('required')"> gender is
+                                                    required</span>
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <label for="bloodGroup" class="form-label">Blood Group<span
+                                                    class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <select id="bloodGroup" name="bloodGroup" formControlName="bloodGroup"
+                                                required>
+                                                <option value="" disabled>Select Blood Group</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option>
+                                            </select>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['bloodGroup'].touched && profileVal['bloodGroup'].invalid">
+                                                <span *ngIf="profileVal['bloodGroup'].hasError('required')"> bloodGroup
+                                                    is
+                                                    required</span>
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <label for="maritalStatus" class="form-label">Marital Status<span
+                                                    class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <select name="maritalStatus" id="maritalStatus"
+                                                formControlName="maritalStatus">
+                                                <option value="" disabled>Select Marital Status</option>
+                                                <option value="Single">Single</option>
+                                                <option value="Married">Married</option>
+                                            </select>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['maritalStatus'].touched && profileVal['maritalStatus'].invalid">
+                                                <span *ngIf="profileVal['maritalStatus'].hasError('required')">
+                                                    maritalStatus is required</span>
+                                            </span>
+                                        </div>
+
+                                        <div>
+                                            <label for="correspondenceAddress"
+                                                class="form-label">CorrespondenceAddress:</label>
+                                            <textarea rows="2" cols="50" name="comment"
+                                                formControlName="correspondenceAddress"
+                                                placeholder="CorrespondenceAddress"></textarea>
+                                        </div>
+
+                                        <div>
+                                            <label for="permanentAddress" class="form-label">PermanentAddress<span
+                                                    class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <textarea rows="2" cols="50" name="comment"
+                                                formControlName="permanentAddress"
+                                                placeholder="PermanentAddress"></textarea>
+                                        </div>
+
+                                        <div>
+                                            <label for="panCardNumber" class="form-label">Pan Card Number<span
+                                                    class="mandatory"
+                                                    style="color: red; font-size: 2ch;">*</span>:</label>
+                                            <input type="text" formControlName="panCardNumber"
+                                                placeholder="Pan Card Number" required>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['panCardNumber'].touched && profileVal['panCardNumber'].invalid">
+                                                <span
+                                                    *ngIf="profileVal['panCardNumber'].hasError('required')">PanCardNumber
+                                                    is required</span>
+                                                <span
+                                                    *ngIf="profileVal['panCardNumber'].hasError('minlength')">PanCardNumber
+                                                    must be 10
+                                                    characters</span>
+                                                <span *ngIf="profileVal['panCardNumber'].hasError('pattern')">Invalid
+                                                    PanCardNumber </span>
+                                            </span>
+                                        </div>
+                                        <div style="margin-top: 10px; margin-left: 20px;">
+                                            <br>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light me-1"
+                                                (click)="addEmployeePersonalDtls(employeeForm.value)">
+                                                Submit
+                                            </button>&nbsp;
+                                            <button type="button"
+                                                class="btn btn-secondary waves-effect waves-light me-1"
+                                                (click)="reset()">
+                                                Clear&nbsp;
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div *ngIf="activeTab === 'tab2'">
+                            <div class="container">
+                                <input type="text" [(ngModel)]="filterText" (input)="onFilterChange($event)"
+                                    placeholder="Search...">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light me-1"
+                                    data-bs-toggle="modal" data-bs-target="#exampleModal">Upload Certificate</button>
+                                <table class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr.No.</th>
+                                            <th>Employee ID</th>
+                                            <th>Employee Name</th>
+                                            <th>Certificate Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let emp of filteredEmployeesByEmployeeId; let i = index">
+                                            <td>{{ i + 1 }}</td>
+                                            <td>{{ emp.employeeId }}</td>
+                                            <td>{{ emp.fullName }}</td>
+                                            <td>{{ emp.documentName }}</td>
+                                            <td>
+                                                <button class="btn btn-primary"
+                                                    (click)="viewPdf(emp.employeeId, emp.documentName)">View</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h2 class="modal-title" id="exampleModalLabel">Upload Certificate</h2>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form [formGroup]="employeeForm">
+                                            <label>Employee ID:</label>
+                                            <select id="employeeId" class="form-control" formControlName="employeeId"
+                                                required>
+                                                <option Value="" disabled selected>EmployeeId</option>
+                                                <option *ngFor="let emp of employee" [ngValue]="emp['employeeId']">{{
+                                                    emp.employeeId }}
+                                                </option>
+                                            </select>
+
+                                            <label>Employee Name</label>
+                                            <input type="text" id="fullName" class="form-control"
+                                                formControlName="fullName" placeholder="Full Name" required>
+
+                                            <label>Document Name</label>
+                                            <select formControlName="documentName" class="form-control"
+                                                id="documentName" required>
+                                                <option value="" disabled>DocumentName</option>
+                                                <option value="SSC" style="color: red;">SSC<span
+                                                        class="mandatory">*</span></option>
+                                                <option value="HSC" style="color: red;">HSC<span
+                                                        class="mandatory">*</span></option>
+                                                <option value="Degree Marksheet" style="color: red;">Degree
+                                                    Marksheet<span class="mandatory">*</span></option>
+                                                <option value="Pan Card Scan Copies" style="color: red;">Pan Card Scan
+                                                    Copies<span class="mandatory">*</span></option>
+                                                <option value="Residential Address Proof" style="color: red;">
+                                                    Residential Address Proof<span class="mandatory">*</span></option>
+                                                <option value="Salary Slips for Previous Organization"
+                                                    style="color: red;">Salary Slips for Previous
+                                                    Organization<span class="mandatory">*</span></option>
+                                                <option value="Relieving Letter for Current or Previous Organization"
+                                                    style="color: red;">Relieving Letter for Current or Previous
+                                                    Organization<span class="mandatory">*</span></option>
+                                                <option value="Driving License">Driving License (Optional)</option>
+                                                <option value="Passport Scan Copies">Passport Scan (Optional)</option>
+                                            </select>
+
+                                            <label>Document</label>
+                                            <div class="file-input-container" style="width: 200px;">
+                                                <input type="file" (change)="convertToBase64($event)"
+                                                    formControlName="file">
+                                                <div *ngIf="myFile">
+                                                    <textarea [(ngModel)]="myFile"></textarea>
+                                                </div>
+                                            </div>
+                                            <label>&nbsp;</label>
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light me-1"
+                                                (click)="uploadCertificatePdf(employeeForm.value)">Submit</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Employee Joining Form</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Employee Joining Form</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-pills nav-justified form-wizard-header mb-2">
+                        <li class="nav-item">
+                            <a href="#Employee Personal Details" data-bs-toggle="tab" data-toggle="tab" class="nav-link"
+                                (click)="showTab('tab1')" [class.active]="activeTab === 'tab1'">
+
+                                <span class="ri-shield-user-line"></span>&nbsp;
+                                <span class="d-none d-sm-inline">Employee Personal Details</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Upload All Certificate" data-bs-toggle="tab" data-toggle="tab" class="nav-link"
+                                (click)="showTab('tab2')" [class.active]="activeTab === 'tab2'">
+
+                                <span class="fa fa-upload" aria-hidden="true"></span>&nbsp;
+                                <span class="d-none d-sm-inline">Upload All Certificate</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="tab-content">
+                    <div *ngIf="activeTab === 'tab1'">
+                        <div class="card">
+                            <div class="card-body">
+                                <form [formGroup]="employeeForm" (ngSubmit)="addEmployeePersonalDtls()">
+                                    <div class="form-group">
+                                        <div class="mb-2">
+                                            <label for="employeeId" class="form-label">Employee Id<span
+                                                    class="required">*</span></label>
+                                            <input type="text" id="employeeId" formControlName="employeeId"
+                                                class="form-control" placeholder="employeeId" required>
+                                            <span class="error-msg"
+                                                *ngIf="profileVal['employeeId'].touched && profileVal['employeeId'].invalid" style="color: red;">
+                                                <span *ngIf="profileVal['employeeId'].hasError('required')">employeeId
+                                                    is
+                                                    required</span>
+                                                <span *ngIf="profileVal['employeeId'].hasError('minlength')">employeeId
+                                                    minimum lenght at least 3 charecters.
+                                                </span>
+                                                <span *ngIf="profileVal['employeeId'].hasError('pattern')">Enter valid
+                                                    employeeId(e.g., ABC, 123, A01) </span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="fullName" class="form-label">Full Name<span
+                                                class="required">*</span></label>
+                                        <input type="text" id="fullName" formControlName="fullName" name="fullName"
+                                            class="form-control" placeholder="fullName" required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['fullName'].touched && profileVal['fullName'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['fullName'].hasError('required')">Full Name is
+                                                required</span>
+                                            <span *ngIf="profileVal['fullName'].hasError('minlength')">Full Name
+                                                must be
+                                                at least 8
+                                                characters</span>
+                                            <span *ngIf="profileVal['fullName'].hasError('pattern')">FullName
+                                                contains
+                                                invalid characters
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="emailId" class="form-label">Email<span
+                                                class="required">*</span></label>
+                                        <input type="email" id="emailId" formControlName="emailId" name="emailId"
+                                            class="form-control" placeholder="emailId" required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['emailId'].touched && profileVal['emailId'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['emailId'].hasError('required')">Email is
+                                                required</span>
+                                            <span *ngIf="profileVal['emailId'].hasError('pattern')">Enter valid
+                                                email</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="mobileNumber" class="form-label">Mobile Number<span
+                                                class="required">*</span></label>
+                                        <input type="mobileNumber" id="mobileNumber" (input)="onInput($event)" formControlName="mobileNumber"
+                                            name="mobileNumber" class="form-control" placeholder="mobileNumber"
+                                            required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['mobileNumber'].touched && profileVal['mobileNumber'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['mobileNumber'].hasError('required')">Contact
+                                                number
+                                                is required</span>
+                                            <span *ngIf="profileVal['mobileNumber'].hasError('pattern')">Enter only 10 digits</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="dateOfBirth" class="form-label">Date of Birth<span
+                                                class="required">*</span></label>
+                                        <input type="date" id="dateOfBirth" formControlName="dateOfBirth"
+                                            name="dateOfBirth" class="form-control" placeholder="dateOfBirth" required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['dateOfBirth'].touched && profileVal['dateOfBirth'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['dateOfBirth'].hasError('required')">Date of
+                                                birth
+                                                is required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="gender" class="form-label">Gender<span
+                                                class="required">*</span></label>
+                                        <select id="gender" formControlName="gender" name="gender" class="form-control"
+                                            placeholder="gender" required>
+                                            <option value="" disabled>Select gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['gender'].touched && profileVal['gender'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['gender'].hasError('required')"> gender is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="bloodGroup" class="form-label">Blood Group<span
+                                                class="required">*</span></label>
+                                        <select id="bloodGroup" name="bloodGroup" formControlName="bloodGroup"
+                                            class="form-control" placeholder="bloodGroup" required>
+                                            <option value="" disabled>Select Blood Group</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                        </select>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['bloodGroup'].touched && profileVal['bloodGroup'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['bloodGroup'].hasError('required')"> bloodGroup
+                                                is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="maritalStatus" class="form-label">Marital Status<span
+                                                class="required">*</span></label>
+                                        <select name="maritalStatus" id="maritalStatus" formControlName="maritalStatus"
+                                            class="form-control" placeholder="maritalStatus" required>
+                                            <option value="" disabled>Select Marital Status</option>
+                                            <option value="Single">Single</option>
+                                            <option value="Married">Married</option>
+                                        </select>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['maritalStatus'].touched && profileVal['maritalStatus'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['maritalStatus'].hasError('required')">
+                                                maritalStatus is required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="correspondenceAddress" class="form-label">CorrespondenceAddress</label>
+                                        <input type="text" id="correspondenceAddress"
+                                            formControlName="correspondenceAddress" name="correspondenceAddress"
+                                            class="form-control" placeholder="correspondenceAddress">
+                                        <!-- <div *ngIf="employeeForm.get('correspondenceAddress')?.invalid && (employeeForm.get('correspondenceAddress')?.dirty || employeeForm.get('correspondenceAddress')?.touched)"
+                                            class="text-danger">Porrespondence Address is required.
+                                        </div> -->
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="permanentAddress" class="form-label">PermanentAddress<span
+                                                class="required">*</span></label>
+                                        <input type="text" id="permanentAddress" formControlName="permanentAddress"
+                                            name="permanentAddress" class="form-control" placeholder="permanentAddress"
+                                            required>
+                                            <span class="error-msg"
+                                            *ngIf="profileVal['permanentAddress'].touched && profileVal['permanentAddress'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['permanentAddress'].hasError('required')">PermanentAddress is
+                                                required</span>
+                                            <span *ngIf="profileVal['permanentAddress'].hasError('minlength')">PermanentAddress
+                                                must be
+                                                at least 8
+                                                characters</span>
+                                            <span *ngIf="profileVal['permanentAddress'].hasError('pattern')">PermanentAddress
+                                                contains
+                                                invalid characters
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="panCardNumber" class="form-label">Pan Card Number<span
+                                                class="required">*</span></label>
+                                        <input type="text" id="panCardNumber" formControlName="panCardNumber"
+                                            name="panCardNumber" class="form-control" placeholder="panCardNumber"
+                                            required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['panCardNumber'].touched && profileVal['panCardNumber'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['panCardNumber'].hasError('required')"
+                                                class="text-danger">PanCardNumber
+                                                is required</span>
+                                            <span *ngIf="profileVal['panCardNumber'].hasError('minlength')"
+                                                class="text-danger">PanCardNumber
+                                                must be 10
+                                                characters</span>
+                                            <span *ngIf="profileVal['panCardNumber'].hasError('maxlength')"
+                                                class="text-danger">PanCardNumber
+                                                must be 10
+                                                characters</span>
+
+                                            <span *ngIf="profileVal['panCardNumber'].hasError('invalidPanCardNumber')"
+                                                class="text-danger">
+                                                Pan Card Number should start with 5 capital letters, followed by 4
+                                                numbers, and end with 1 capital letter (e.g., ABCDE1234E).
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <br>
+
+                                    <div class="mb-2 row">
+                                        <div class="col-8 offset-4">
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light me-1"
+                                            > Submit </button>
+                                            <button type="button"
+                                                class="btn btn-secondary waves-effect waves-light me-1"
+                                                (click)="reset()">
+                                                Clear&nbsp;
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div *ngIf="activeTab === 'tab2'">
+                        <input type="text" [(ngModel)]="filterText" (input)="onFilterChange($event)"
+                            placeholder="Search By EmployeeId">
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light me-1"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Upload Certificate</button>
+                        <form>
+                            <div class="custom-accordion">
+                                <div class="collapse show" id="taskcollapse1">
+                                    <div class="table-responsive mt-3">
+                                        <table class="table table-centered table-nowrap table-borderless table-sm">
+                                            <thead class="table-light">
+
+                                                <tr>
+                                                    <th>Sr.No.</th>
+                                                    <th>Employee ID</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Certificate Name</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let emp of filteredEmployeesByEmployeeId; let i = index">
+                                                    <td>{{ i + 1 }}</td>
+                                                    <td>{{ emp.employeeId }}</td>
+                                                    <td>{{ emp.fullName }}</td>
+                                                    <td>{{ emp.documentName }}</td>
+                                                    <td>
+                                                        <button class="btn btn-primary"
+                                                            (click)="viewPdf(emp.employeeId, emp.documentName)"><i
+                                                                class="fas fa-eye"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div *ngIf="showViewer">
+                            <div style="width: 900px; height: 800px">
+                                <ngx-extended-pdf-viewer [src]="pdfUrl"
+                                    [useBrowserLocale]="true"></ngx-extended-pdf-viewer>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="exampleModalLabel">Upload Certificate</h2>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form [formGroup]="employeeForm">
+                                        <div class="form-group">
+                                            <div class="mb-2">
+                                                <label for="employeeId" class="form-label">Employee ID</label>
+                                                <select id="employeeId" class="form-control"
+                                                    formControlName="employeeId" placeholder="employeeId">
+                                                    <option Value="" disabled selected>EmployeeId</option>
+                                                    <option *ngFor="let emp of employee" [ngValue]="emp['employeeId']">
+                                                        {{emp.employeeId }}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label for="fullName" class="form-label">Employee Name</label>
+                                            <input type="text" id="fullName" formControlName="fullName" name="fullName"
+                                                class="form-control" placeholder="fullName">
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label for="documentName" class="form-label">Document Name</label>
+                                            <select formControlName="documentName" class="form-control"
+                                                id="documentName" placeholder="documentName">
+                                                <option value="" disabled>DocumentName</option>
+                                                <option value="SSC" style="color: red;">SSC<span
+                                                        class="mandatory">*</span>
+                                                </option>
+                                                <option value="HSC" style="color: red;">HSC<span
+                                                        class="mandatory">*</span>
+                                                </option>
+                                                <option value="Degree Marksheet" style="color: red;">Degree
+                                                    Marksheet<span class="mandatory">*</span></option>
+                                                <option value="Pan Card Scan Copies" style="color: red;">Pan Card Scan
+                                                    Copies<span class="mandatory">*</span></option>
+                                                <option value="Residential Address Proof" style="color: red;">
+                                                    Residential Address Proof<span class="mandatory">*</span></option>
+                                                <option value="Salary Slips for Previous Organization"
+                                                    style="color: red;">
+                                                    Salary Slips for Previous
+                                                    Organization<span class="mandatory">*</span></option>
+                                                <option value="Relieving Letter for Current or Previous Organization"
+                                                    style="color: red;">Relieving Letter for Current or Previous
+                                                    Organization<span class="mandatory">*</span></option>
+                                                <option value="Driving License">Driving License (Optional)</option>
+                                                <option value="Passport Scan Copies">Passport Scan (Optional)</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <label for="file" class="form-label">Document</label>
+                                            <div class="file-input-container">
+                                                <input type="file" (change)="convertToBase64($event)"
+                                                    formControlName="file" class="form-control" id="file"
+                                                    placeholder="file">
+                                                <div *ngIf="myFile">
+                                                    <textarea [(ngModel)]="myFile"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="cancel" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary" waves-effect waves-light me-1
+                                        (click)="uploadCertificatePdf(employeeForm.value)">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

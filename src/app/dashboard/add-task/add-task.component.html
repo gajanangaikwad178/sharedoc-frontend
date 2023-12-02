@@ -1,0 +1,474 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Add Task</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Add Task</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <button class="btn btn-primary waves-effect waves-light me-1" (click)="showAddTaskForm = true">
+                        Add New Task
+                    </button><br><br>
+
+                    <ul class="nav nav-pills nav-justified form-wizard-header mb-3">
+                        <li class="nav-item">
+                            <a href="#Not Started" data-bs-toggle="tab" data-toggle="tab" class="nav-link"
+                                (click)="showTab('tab1'); showAddTaskForm = false"
+                                [class.active]="activeTab === 'tab1'">
+                                <i class="fas fa-circle"></i>&nbsp;
+                                <span class="d-none d-sm-inline">Not Started</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#In Progress" data-bs-toggle="tab" data-toggle="tab" class="nav-link"
+                                (click)="showTab('tab2'); showAddTaskForm = false"
+                                [class.active]="activeTab === 'tab2'">
+                                <i class="fas fa-spinner"></i>&nbsp;
+                                <span class="d-none d-sm-inline">In Progress</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Completed" data-bs-toggle="tab" data-toggle="tab" class="nav-link"
+                                (click)="showTab('tab3'); showAddTaskForm = false"
+                                [class.active]="activeTab === 'tab3'">
+                                <i class="fas fa-check-circle"></i>&nbsp;
+                                <span class="d-none d-sm-inline">Completed</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+
+                <div class="tab-content b-0 pt-0 mb-0">
+
+                    <div id="bar" class="progress mb-3" style="height: 7px;">
+                        <div class="bar progress-bar progress-bar-striped progress-bar-animated bg-success">
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeTab === 'tab1'">
+                        <div class="table-responsive mt-3">
+                            <table class="table table-centered table-nowrap table-borderless table-sm">
+
+                                <thead class="table-light">
+                                    <tr class="">
+                                        <th scope="col">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="tasktodayCheck">Task ID</label>
+                                            </div>
+                                        </th>
+
+                                        <th scope="col">Project Name</th>
+                                        <th scope="col">Tasks</th>
+                                        <th scope="col">Assign to</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">Due Date</th>
+                                        <th scope="col">Task priority</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Task Status</th>
+                                        <th scope="col" style="width: 85px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tasks of notStartedList">
+                                        <td>
+                                            <div class="form-check">
+                                                <label class="form-check-label"
+                                                    for="tasktodayCheck01">{{tasks.id}}</label>
+                                            </div>
+                                        </td>
+
+                                        <td>{{tasks.projectName}}</td>
+                                        <td>{{tasks.taskName}}</td>
+                                        <td>{{tasks.userId}}</td>
+                                        <td>{{tasks.startDate}}</td>
+                                        <td>{{tasks.endDate}}</td>
+                                        <td><span class="badge badge-soft-danger p-1">{{tasks.priority}}</span></td>
+                                        <td>{{tasks.department}}</td>
+                                        <td>{{tasks.description}}</td>
+                                        <td>{{tasks.taskStatus}}</td>
+                                        <td> <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal"
+                                                (click)="onEdit(tasks)">Inprogress</button>
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline table-action m-0">
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div *ngIf="activeTab === 'tab2'">
+                        <div class="table-responsive mt-3">
+                            <table class="table table-centered table-nowrap table-borderless table-sm">
+
+                                <thead class="table-light">
+                                    <tr class="">
+                                        <th scope="col">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="tasktodayCheck">Task ID</label>
+                                            </div>
+                                        </th>
+
+                                        <th scope="col">Project Name</th>
+                                        <th scope="col">Tasks</th>
+                                        <th scope="col">Assign to</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">Due Date</th>
+                                        <th scope="col">Task priority</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Task Status</th>
+                                        <th scope="col" style="width: 85px;">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tasks of inProgressList">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="tasktodayCheck01">
+                                                <label class="form-check-label"
+                                                    for="tasktodayCheck01">{{tasks.id}}</label>
+                                            </div>
+                                        </td>
+
+                                        <td>{{tasks.projectName}}</td>
+                                        <td>{{tasks.taskName}}</td>
+                                        <td>{{tasks.userId}}</td>
+                                        <td>{{tasks.startDate}}</td>
+                                        <td>{{tasks.endDate}}</td>
+                                        <td>{{tasks.priority}}</td>
+                                        <td>{{tasks.department}}</td>
+                                        <td>{{tasks.description}}</td>
+                                        <td>{{tasks.taskStatus}}</td>
+                                        <td> <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal" (click)="onEdit(tasks)">Complete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div *ngIf="activeTab === 'tab3'">
+                        <div class="table-responsive mt-3">
+                            <table class="table table-centered table-nowrap table-borderless table-sm">
+
+                                <thead class="table-light">
+                                    <tr class="">
+                                        <th scope="col">
+                                            <div class="form-check">
+                                                <label class="form-check-label" for="tasktodayCheck">Task ID</label>
+                                            </div>
+                                        </th>
+
+                                        <th scope="col">Project Name</th>
+                                        <th scope="col">Tasks</th>
+                                        <th scope="col">Assign to</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">Due Date</th>
+                                        <th scope="col">Task priority</th>
+                                        <th scope="col">Department</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Task Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let tasks of completedList">
+                                        <td>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="tasktodayCheck01">
+                                                <label class="form-check-label"
+                                                    for="tasktodayCheck01">{{tasks.id}}</label>
+                                            </div>
+                                        </td>
+
+                                        <td>{{tasks.projectName}}</td>
+                                        <td>{{tasks.taskName}}</td>
+                                        <td>{{tasks.userId}}</td>
+                                        <td>{{tasks.startDate}}</td>
+                                        <td>{{tasks.endDate}}</td>
+                                        <td>{{tasks.priority}}</td>
+                                        <td>{{tasks.department}}</td>
+                                        <td>{{tasks.description}}</td>
+                                        <td>{{tasks.taskStatus}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h2 class="modal-title" id="exampleModalLabel">
+                                    Update Task
+                                    Status</h2>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form [formGroup]="myFirstForm">
+                                    <label>Task_Id</label>
+                                    <input type="text" class="form-control" formControlName="id" placeholder="Id">
+                                    <br>
+                                    <label>Assignee</label>
+                                    <input type="text" class="form-control" formControlName="userId" placeholder="User">
+                                    <br>
+                                    <div>
+                                        <label>Status</label>
+                                        <select class="form-control" formControlName="taskStatus"
+                                            placeholder="Task Status">
+                                            <option value="Not started">Not started
+                                            </option>
+                                            <option value="In progress">In progress
+                                            </option>
+                                            <option value="completed">completed
+                                            </option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="cancel" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary"
+                                    (click)="updateTaskStatus()">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Task Form -->
+                <div class="row" *ngIf="showAddTaskForm">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="mb-2">
+                                    <h4 class="header-title">Add Task Form</h4>
+                                </div>
+                                <form [formGroup]="myForm" (ngSubmit)="addTask()">
+                                    <div class="form-group">
+                                        <div class="mb-2">
+                                            <label for="projectName" class="form-label">Project Name<span
+                                                    class="required">*</span></label>
+                                            <input type="text" id="projectName" formControlName="projectName"
+                                                class="form-control" placeholder="ProjectName" required>
+                                            <span class="error-msg"
+                                                *ngIf="myForm.get('projectName')?.touched && myForm.get('projectName')?.invalid" style="color: red;">
+                                                <span *ngIf="myForm.get('projectName')?.hasError('required')">Project
+                                                    Name is
+                                                    required</span>
+                                                <span *ngIf="myForm.get('projectName')?.hasError('minlength')">Project
+                                                    Name must be at least 8
+                                                    characters</span>
+                                                <span *ngIf="myForm.get('projectName')?.hasError('pattern')">Project
+                                                    Name
+                                                    contains
+                                                    invalid characters
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="taskName" class="form-label">Task Name<span
+                                                class="required">*</span></label>
+                                        <input type="text" id="taskName" formControlName="taskName" name="taskName"
+                                            class="form-control" placeholder="TaskName" required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['taskName'].touched && profileVal['taskName'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['taskName'].hasError('required')">Task Name is
+                                                required</span>
+                                            <span *ngIf="profileVal['taskName'].hasError('minlength')">Task Name
+                                                must be
+                                                at least 8
+                                                characters</span>
+                                            <span *ngIf="profileVal['taskName'].hasError('pattern')">Task Name
+                                                contains
+                                                invalid characters
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="department" class="form-label">Department<span
+                                                class="required">*</span></label>
+                                        <select id="department" formControlName="department" name="department"
+                                            class="form-control" placeholder="department" required>
+                                            <option value="">Select an option</option>
+                                            <option value="Developer Department">Developer
+                                                Department
+                                            </option>
+                                            <option value="Testing Department">Testing
+                                                Department</option>
+                                            <option value="Support Department">Support
+                                                Department</option>
+                                        </select>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['department'].touched && profileVal['department'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['department'].hasError('required')"> Department is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="startDate" class="form-label">Start Date<span
+                                                class="required">*</span></label>
+                                        <input type="date" id="startDate" formControlName="startDate" name="startDate"
+                                            class="form-control" required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['startDate'].touched && profileVal['startDate'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['startDate'].hasError('required')"> startDate is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="endDate" class="form-label">End Date<span
+                                                class="required">*</span></label>
+                                        <input type="date" id="endDate" formControlName="endDate" name="endDate"
+                                            class="form-control" required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['endDate'].touched && profileVal['endDate'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['endDate'].hasError('required')"> endDate is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="remark" class="form-label">Remark</label>
+                                        <input type="text" id="remark" formControlName="remark" name="remark"
+                                            class="form-control" placeholder="Remark">
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label class="form-label">Assignee<span class="required">*</span></label>
+                                        <select id="userId" formControlName="userId" name="userId" class="form-control">
+                                            <option value="">Select an option</option>
+                                            <option *ngFor="let item of users" [value]="item.userId">
+                                                {{item.name}}-{{item.userId}}</option>
+                                        </select>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['userId'].touched && profileVal['userId'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['userId'].hasError('required')">Assignee is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="checkList" class="form-label">Checklist</label>
+                                        <input type="text" id="checkList" formControlName="checkList" name="checkList"
+                                            class="form-control" placeholder="Checklist">
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label class="form-label">Priority<span class="required">*</span></label><br>
+                                        <input type="radio" id="low" formControlName="priority" name="priority"
+                                            value="low">
+                                        Low
+                                        <input type="radio" id="medium" formControlName="priority" name="priority"
+                                            value="medium"> Medium
+                                        <input type="radio" id="high" formControlName="priority" name="priority"
+                                            value="high"> High
+                                            <br>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['priority'].touched && profileVal['priority'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['priority'].hasError('required')">Priority is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="tags" class="form-label">Tags</label>
+                                        <input type="text" id="tags" formControlName="tags" name="tags"
+                                            class="form-control" placeholder="Tags">
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="followers" class="form-label">Followers</label>
+                                        <input type="text" id="followers" formControlName="followers" name="followers"
+                                            class="form-control" placeholder="Followers">
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="taskStatus" class="form-label">Task Status <span
+                                                class="required">*</span></label>
+                                        <select id="taskStatus" formControlName="taskStatus" name="taskStatus"
+                                            class="form-control" required>
+                                            <option value="">Select an option</option>
+                                            <option value="Not started">Not started</option>
+                                            <option value="In progress">In progress</option>
+                                            <option value="completed">Completed</option>
+                                        </select>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['taskStatus'].touched && profileVal['taskStatus'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['taskStatus'].hasError('required')">Task Status is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="description" class="form-label">Description <span
+                                                class="required">*</span></label>
+                                        <input type="text" id="description" formControlName="description"
+                                            name="description" class="form-control" placeholder="Description" required>
+                                        <span class="error-msg"
+                                            *ngIf="profileVal['description'].touched && profileVal['description'].invalid" style="color: red;">
+                                            <span *ngIf="profileVal['description'].hasError('required')">Description is
+                                                required</span>
+                                            <span *ngIf="profileVal['description'].hasError('minlength')">Description
+                                                must be
+                                                at least 10
+                                                characters</span>
+                                            <span *ngIf="profileVal['description'].hasError('pattern')">Description
+                                                contains
+                                                invalid characters
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <!-- Other form fields go here -->
+                                    <br>
+
+                                    <div class="mb-2 row">
+                                        <div class="col-8 offset-4">
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
+                                                Submit
+                                            </button>
+                                            <button type="button"
+                                                class="btn btn-secondary waves-effect waves-light me-1"
+                                                (click)="reset()">
+                                                Clear&nbsp;
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

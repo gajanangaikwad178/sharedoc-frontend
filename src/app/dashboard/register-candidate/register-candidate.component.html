@@ -1,0 +1,158 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Candidate Registration Form</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Register Candidate</a></li>
+                        <li class="breadcrumb-item active">Candidate Registration Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <!-- <h4 class="header-title">Candidate Registration Form</h4> -->
+                    <!-- <p class="sub-header">
+                        Parsley is a javascript form validation library. It helps you provide your users with
+                        feedback on their form submission before sending it to your server.
+                    </p> -->
+
+                    <form action="#" [formGroup]="registerCandidate" (ngSubmit)="submit()" class="parsley-examples">
+                        <div class="mb-2">
+                            <label for="userName" class="form-label">Candidate Name<span
+                                    class="text-danger">*</span></label>
+                            <input type="text" name="nick" parsley-trigger="change" required
+                                placeholder="Enter user name" class="form-control" formControlName="candidate_Name"
+                                id="userName" pattern="^\S.*$">
+                            <div class="form-group forminput"
+                                *ngIf="registerCandidate.controls['candidate_Name'].invalid && registerCandidate.controls['candidate_Name'].touched">
+                                <div class="text-danger"
+                                    *ngIf="registerCandidate.controls['candidate_Name'].errors?.['required']">Name is
+                                    required.
+                                </div>
+                                <span class="text-danger"
+                                    *ngIf="registerCandidate.get('candidate_Name')?.errors?.['pattern']">No special
+                                    characters and Blank spaces
+                                    allowed .</span>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="emailAddress" class="form-label">Email address<span
+                                    class="text-danger">*</span></label>
+                            <input type="email" name="email" parsley-trigger="change" required placeholder="Enter email"
+                                class="form-control" id="emailAddress" formControlName="email">
+                            <div class="form-group forminput"
+                                *ngIf="registerCandidate.controls['email'].invalid && registerCandidate.controls['email'].touched">
+                                <div class="text-danger"
+                                    *ngIf="registerCandidate.controls['email'].errors?.['required']">Email is required.
+                                </div>
+                                <div class="text-danger" *ngIf="registerCandidate.controls['email'].errors?.['email']">
+                                    Please enter a valid
+                                    email address.</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="phone" class="form-label">Phone<span class="text-danger">*</span></label>
+                            <input id="phone" type="text" placeholder="Enter Phone Number" required class="form-control"
+                                formControlName="mobileNumber" maxlength="10">
+                            <div class="form-group forminput"
+                                *ngIf="registerCandidate.controls['mobileNumber'].invalid && registerCandidate.controls['mobileNumber'].touched">
+                                <div class="text-danger"
+                                    *ngIf="registerCandidate.controls['mobileNumber'].errors?.['required']">Phone
+                                    number is required.</div>
+                                <div class="text-danger"
+                                    *ngIf="registerCandidate.controls['mobileNumber'].errors?.['pattern']">Please enter
+                                    a valid phone number.</div>
+                                <div class="text-danger"
+                                    *ngIf="registerCandidate.controls['mobileNumber'].errors?.['minLength']">Please
+                                    enter
+                                    a valid phone number.</div>
+                                <div class="text-danger"
+                                    *ngIf="registerCandidate.controls['mobileNumber'].errors?.['maxLength']">Please
+                                    enter
+                                    a valid phone number.</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="qualification" class="form-label">Qualification<span
+                                    class="text-danger">*</span></label>
+                            <input id="qualification" type="text" placeholder="Enter Qualification" required
+                                class="form-control" formControlName="qualification" pattern="^\S.*$">
+                            <div class="form-group forminput"
+                                *ngIf="registerCandidate.controls['qualification'].invalid && registerCandidate.controls['qualification'].touched">
+                                <div class="text-danger"
+                                    *ngIf="registerCandidate.controls['qualification'].errors?.['required']">
+                                    Qualification is required.</div>
+                                <div class="text-danger"
+                                    *ngIf="registerCandidate.get('qualification')?.errors?.['pattern']">No special
+                                    characters and Blank spaces
+                                    allowed .</div>
+
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="address" class="form-label">Address</label>
+                            <input id="address" type="text" placeholder="Enter Address" class="form-control"
+                                formControlName="address">
+                        </div>
+
+                        <div class="row col-md-12">
+                            <div class="file-input-container forminput col-md-6">
+                                <label class="form-label">Upload Photo : </label>
+                                <input type="file" class="form-control" (change)="onFileInputChange($event)"
+                                    formControlName="photoFilePath">
+                                <div>
+                                    <img *ngIf="base64Data" [src]="base64Data" style="height: 70px; width: 70px;"
+                                        alt="Uploaded Photo">
+                                </div>
+                            </div>
+
+                            <div class="file-input-container forminput col-md-6">
+                                <label class="form-label">Upload CV : <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" (change)="convertToBase64CV($event)"
+                                    formControlName="cvFilePath">
+                                <div class="form-group forminput"
+                                    *ngIf="registerCandidate.controls['cvFilePath'].invalid && registerCandidate.controls['cvFilePath'].touched">
+                                    <div class="text-danger"
+                                        *ngIf="registerCandidate.controls['cvFilePath'].errors?.['required']">Please
+                                        upload a CV.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="mb-2 row">
+                            <div class="col-8 offset-5">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light me-1"
+                                    [disabled]="registerCandidate.invalid">
+                                    Register
+                                </button>
+                                <button type="reset" class="btn btn-secondary waves-effect" (click)="reset()">
+                                    Clear
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div> <!-- end card -->
+        </div>
+        <!-- end col -->

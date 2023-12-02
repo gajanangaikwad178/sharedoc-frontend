@@ -1,0 +1,211 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Personal Details</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Personal Details</a></li>
+                        <li class="breadcrumb-item active"> Personal Details Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- <ul class="nav nav-tabs row"> -->
+                    <!-- <li class="nav-item col-4">
+                            <a class="nav-link" (click)="showTab('tab1')" [ngClass]="{'active': activeTab === 'tab1'}">PendingLeave</a>
+                        </li>
+                        <li class="nav-item col-4">
+                            <a class="nav-link" (click)="showTab('tab2')" [class.active]="activeTab === 'tab2'">Approved</a>
+                        </li>
+                        <li class="nav-item col-4">
+                            <a class="nav-link" (click)="showTab('tab3')" [class.active]="activeTab === 'tab3'">Rejected</a>
+                        </li> -->
+                    <!-- </ul> -->
+                    <ul class="nav nav-pills nav-justified form-wizard-header mb-3">
+                        <li class="nav-item">
+                            <a href="#PendingLeave" data-bs-toggle="tab" data-toggle="tab" class="nav-link"
+                                (click)="showTab('tab1')"
+                                [class.active]="activeTab === 'tab1'">
+                                <!-- <span class="number">1</span> -->
+                                <i class="fas fa-clock"></i>&nbsp;
+                                <span class="d-none d-sm-inline">PendingLeave</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Approved" data-bs-toggle="tab" data-toggle="tab" class="nav-link"
+                                (click)="showTab('tab2')"
+                                [class.active]="activeTab === 'tab2'">
+                                <!-- <span class="number">2</span> -->
+                                <i class="fas fa-check"></i>&nbsp;
+                                <span class="d-none d-sm-inline">Approved</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Rejected" data-bs-toggle="tab" data-toggle="tab" class="nav-link"
+                                (click)="showTab('tab3')"
+                                [class.active]="activeTab === 'tab3'">
+                                <!-- <span class="number">3</span> -->
+                                <i class="fas fa-times"></i>&nbsp;
+                                <span class="d-none d-sm-inline">Rejected</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div *ngIf="activeTab === 'tab1'">
+                            <form>
+                                <div class="custom-accordion">
+                                    <div class="collapse show" id="taskcollapse1">
+                                        <div class="table-responsive mt-3">
+                                            <table class="table table-centered table-nowrap table-borderless table-sm">
+                                                <thead class="table-light">
+
+                                                    <tr>
+                                                        <th scope="col">UserId</th>
+                                                        <th scope="col">LeaveType</th>
+                                                        <th scope="col" style="padding-right: 30px;">StartDate</th>
+                                                        <th scope="col" style="padding-right: 30px;">EndDate</th>
+                                                        <th scope="col">EmployeeReason</th>
+                                                        <!--<th scope="col">HrReason</th>-->
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngFor="let users of pendingList">
+                                                    <tr>
+                                                        <td>{{users.userId}}</td>
+                                                        <td>{{users.leaveType}}</td>
+                                                        <td>{{users.startDate}}</td>
+                                                        <td>{{users.endDate}}</td>
+                                                        <td>{{users.employeeReason}}</td>
+                                                        <!--<td>{{users.hrReason}}</td>-->
+                                                        <td>{{users.status}}</td>
+                                                        <td> <button type="button" class="btn btn-primary"
+                                                                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                                (click)="onEdit(users)">View</button></td>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        ​
+                        <div *ngIf="activeTab === 'tab2'">
+                            <form>
+                                <div class="custom-accordion">
+                                    <div class="collapse show" id="taskcollapse1">
+                                        <div class="table-responsive">
+                                            <table class="table table-centered table-nowrap table-borderless table-sm">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th scope="col">UserId</th>
+                                                        <th scope="col">LeaveType</th>
+                                                        <th scope="col" style="padding-right: 30px;">StartDate</th>
+                                                        <th scope="col" style="padding-right: 30px;">EndDate</th>
+                                                        <th scope="col">EmployeeReason</th>
+                                                        <th scope="col">HrReason</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngFor="let users of approvedList">
+                                                    <tr>
+                                                        <td>{{users.userId}}</td>
+                                                        <td>{{users.leaveType}}</td>
+                                                        <td>{{users.startDate}}</td>
+                                                        <td>{{users.endDate}}</td>
+                                                        <td>{{users.employeeReason}}</td>
+                                                        <td>{{users.hrReason}}</td>
+                                                        <td>{{users.status}}</td>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        ​
+                        <div *ngIf="activeTab === 'tab3'">
+                            <form>
+                                <div class="custom-accordion">
+                                    <div class="collapse show" id="taskcollapse1">
+                                        <div class="table-responsive mt-3">
+                                            <table class="table table-centered table-nowrap table-borderless table-sm">
+                                                <thead class="table-light">
+                                                    <tr>
+                                                        <th scope="col">UserId</th>
+                                                        <th scope="col">LeaveType</th>
+                                                        <th scope="col" style="padding-right: 30px;">StartDate</th>
+                                                        <th scope="col" style="padding-right: 30px;">EndDate</th>
+                                                        <th scope="col">EmployeeReason</th>
+                                                        <th scope="col">HrReason</th>
+                                                        <th scope="col">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngFor="let users of rejectedList">
+                                                    <tr>
+                                                        <td>{{users.userId}}</td>
+                                                        <td>{{users.leaveType}}</td>
+                                                        <td>{{users.startDate}}</td>
+                                                        <td>{{users.endDate}}</td>
+                                                        <td>{{users.employeeReason}}</td>
+                                                        <td>{{users.hrReason}}</td>
+                                                        <td>{{users.status}}</td>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    ​
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" #LeaveModel tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Leave Request</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form [formGroup]="formValue">
+                                        <label>Status</label>
+                                        ​
+                                        <select class="form-control" formControlName="status" placeholder="status">
+                                            <option value="approved">Approved</option>
+                                            <option value="rejected">Rejected</option>
+                                        </select>
+                                        ​
+                                        <br>
+                                        <div>
+                                            <label>Hr Reason</label>
+                                            <input type="text" class="form-control" formControlName="hrReason"
+                                                placeholder="Reason">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" id="cancel" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary" (click)="updateStatus()">Update
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

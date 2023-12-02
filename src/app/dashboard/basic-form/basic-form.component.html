@@ -1,0 +1,173 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Form</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
+                        <li class="breadcrumb-item active">Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page title -->
+
+
+
+
+    <div class="row">
+        <div class="col-lg-6">
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Basic Form</h4>
+                    <p class="sub-header">
+                        Parsley is a javascript form validation library. It helps you provide your users with
+                        feedback on their form submission before sending it to your server.
+                    </p>
+
+                    <form action="#" class="parsley-examples">
+                        <div class="mb-2">
+                            <label for="userName" class="form-label">User Name<span class="text-danger">*</span></label>
+                            <input type="text" name="nick" parsley-trigger="change" required
+                                placeholder="Enter user name" class="form-control" id="userName">
+                        </div>
+                        <div class="mb-2">
+                            <label for="emailAddress" class="form-label">Email address<span
+                                    class="text-danger">*</span></label>
+                            <input type="email" name="email" parsley-trigger="change" required placeholder="Enter email"
+                                class="form-control" id="emailAddress">
+                        </div>
+                        <div class="mb-2">
+                            <label for="pass1" class="form-label">Password<span class="text-danger">*</span></label>
+                            <input id="pass1" type="password" placeholder="Password" required class="form-control">
+                        </div>
+                        <div class="mb-2">
+                            <label for="passWord2" class="form-label">Confirm Password <span
+                                    class="text-danger">*</span></label>
+                            <input data-parsley-equalto="#pass1" type="password" required placeholder="Password"
+                                class="form-control" id="passWord2">
+                        </div>
+                        <div class="mb-2">
+                            <div class="form-check form-checkbox-purple">
+                                <input id="checkbox6a" type="checkbox" class="form-check-input" checked>
+                                <label for="checkbox6a">
+                                    Remember me
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="text-end">
+                            <button class="btn btn-primary waves-effect waves-light me-1" type="submit">
+                                Submit
+                            </button>
+                            <button type="reset" class="btn btn-secondary waves-effect">
+                                Cancel
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div> <!-- end card -->
+        </div>
+        <!-- end col -->
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Horizontal Form</h4>
+                    <p class="sub-header">
+                        Parsley is a javascript form validation library. It helps you provide your users with
+                        feedback on their form submission before sending it to your server.
+                    </p>
+
+                    <form role="form" class="parsley-examples">
+                        <div class="mb-2 row">
+                            <label for="inputEmail3" class="col-4 col-form-label">Email<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-7">
+                                <input type="email" required parsley-type="email" class="form-control" id="inputEmail3"
+                                    placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <label for="hori-pass1" class="col-4 col-form-label">Password<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-7">
+                                <input id="hori-pass1" type="password" placeholder="Password" required
+                                    class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <label for="hori-pass2" class="col-4 col-form-label">Confirm Password
+                                <span class="text-danger">*</span></label>
+                            <div class="col-7">
+                                <input data-parsley-equalto="#hori-pass1" type="password" required
+                                    placeholder="Password" class="form-control" id="hori-pass2">
+                            </div>
+                        </div>
+
+                        <div class="mb-2 row">
+                            <label for="webSite" class="col-4 col-form-label">Web Site<span
+                                    class="text-danger">*</span></label>
+                            <div class="col-7">
+                                <input type="url" required parsley-type="url" class="form-control" id="webSite"
+                                    placeholder="URL">
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col-8 offset-4">
+                                <div class="form-check form-checkbox-purple">
+                                    <input id="checkbox6" type="checkbox" class="form-check-input">
+                                    <label for="checkbox6">
+                                        Remember me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2 row">
+                            <div class="col-8 offset-4">
+                                <button type="submit" class="btn btn-primary waves-effect waves-light me-1">
+                                    Register
+                                </button>
+                                <button type="reset" class="btn btn-secondary waves-effect">
+                                    Cancel
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div> <!-- end card-box -->
+
+        </div> <!-- end col -->
+    </div>
+    <!-- end row -->
+
+
+</div> <!-- container -->
+
+
+<!-- Footer Start -->
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <script>document.write(new Date().getFullYear())</script> &copy; <a href="#">HRMS</a>
+            </div>
+            <div class="col-md-6">
+                <div class="text-md-end footer-links d-none d-sm-block">
+                    <a href="javascript:void(0);">About Us</a>
+                    <a href="javascript:void(0);">Help</a>
+                    <a href="javascript:void(0);">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- end Footer -->

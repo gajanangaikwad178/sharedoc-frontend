@@ -1,0 +1,589 @@
+<div class="loading auth-fluid-pages pb-0">
+
+    <div class="auth-fluid">
+        <!-- Auth fluid right content -->
+        <div class="auth-fluid-right">
+            <!-- Logo -->
+            <div class="auth-brand text-center text-lg-start">
+                <div class="auth-logo">
+                    <!-- <a href="index.html" class="logo fossgen_logo text-center">
+                        <span class="logo-lg">
+                            <img src="assets/images/fossgen_logo.png" alt="" height="45">
+                        </span>
+                    </a> -->
+
+                    <a href="index.html" class="logo fossgen_logo text-center">
+                        <span class="logo-lg">
+                            <img src="assets/images/fossgen_logo.png" alt="" height="45">
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="auth-user-testimonial">
+                <a href="index.html" class="logo fossgen_logo text-center">
+                    <span class="logo-lg">
+                        <img src="assets/images/share_doc_service.jpeg" alt="" height="350" width="700">
+                    </span>
+                </a>
+                <h3 class="mb-3 text-white">Customers Loves shareDoc</h3>
+                <p class="lead fw-normal"><i class="mdi mdi-format-quote-open"></i> I've been using this services for a
+                    while and I must say that whenever I am looking for a api - I refer to this theme for specifics &
+                    implementation. I would highly recommend shareDoc for anyone using it for usage.. <i
+                        class="mdi mdi-format-quote-close"></i>
+                </p>
+                <h5 class="text-white">
+                    - Admin User
+                </h5>
+            </div> <!-- end auth-user-testimonial-->
+        </div>
+        <!-- end Auth fluid right content -->
+
+        <!--Auth fluid left content -->
+        <div class="auth-fluid-form-box">
+            <div class="align-items-center d-flex h-100">
+                <div class="card-body" *ngIf="login">
+
+                    <!-- title-->
+                    <h4 class="mt-0">Sign In</h4>
+                    <p class="text-muted mb-4">Enter your email address and password to access admin panel.</p>
+
+                    <!-- form -->
+                    <form action="#" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="mb-2">
+                            <label for="emailaddress" class="form-label">User Id</label>
+                            <input formControlName="emailaddress" class="form-control" type="email" id="emailaddress"
+                                required="" placeholder="Enter your user id">
+                        </div>
+                        <div class="mb-2">
+                            <a class="text-muted float-end" (click)="showRecoveryPWDForm()" href="#"><small>Forgot your
+                                    password?</small></a>
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group input-group-merge">
+                                <input formControlName="password" type="password" id="password" class="form-control"
+                                    placeholder="Enter your password" [type]="showPassword ? 'text' : 'password'">
+                                <div class="input-group-text" (click)="togglePassword()" data-password="false">
+                                    <span class="password-eye"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="captcha">CAPTCHA</label>
+                            <div class="captcha-container">
+                                <canvas id="captcha" width="200" height="50"></canvas>
+                                <button type="button" class="btn btn-danger" id="refresh-captcha"
+                                    (click)="refreshCaptcha()">Refresh CAPTCHA</button>
+                            </div>
+                            <input type="text" class="form-control" [(ngModel)]="enteredCaptcha" id="captcha-input"
+                                name="captcha-input" placeholder="Enter CAPTCHA" [ngModelOptions]="{standalone: true}">
+                        </div>
+
+
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="checkbox-signin">
+                                <label class="form-check-label" for="checkbox-signin">
+                                    Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-grid text-center">
+                            <button class="btn btn-primary" type="submit">Log In </button>
+                        </div>
+                        <!-- social-->
+                        <div class="text-center mt-4">
+                            <h5 class="mt-0 text-muted">Sign in with</h5>
+                            <ul class="social-list list-inline mt-3 mb-0">
+                                <li class="list-inline-item">
+                                    <a href="javascript: void(0);" class="social-list-item border-purple text-purple"><i
+                                            class="mdi mdi-facebook"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="javascript: void(0);" class="social-list-item border-danger text-danger"><i
+                                            class="mdi mdi-google"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="javascript: void(0);" class="social-list-item border-info text-info"><i
+                                            class="mdi mdi-twitter"></i></a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="javascript: void(0);"
+                                        class="social-list-item border-secondary text-secondary"><i
+                                            class="mdi mdi-github"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                    <!-- end form-->
+
+                    <!-- Footer-->
+                    <br>
+
+                    <br>
+                    <br>
+                    <footer class="footer footer-alt">
+                        <p class="text-muted">Don't have Company OnBoarding? <a (click)="showSignUp()" href="#"
+                                class="text-primary fw-medium ms-1">Company OnBoarding</a></p>
+                        <div>
+                            <p class="text-muted">Don't have Registration? <a (click)="userShowSignUp()" href="#"
+                                    class="text-primary fw-medium ms-1">User Registration</a></p>
+                        </div>
+                    </footer>
+
+
+
+                </div> <!-- end .card-body -->
+
+                <div class="card-body" *ngIf="recoverPwd">
+                    <!-- title-->
+                    <h4 class="mt-0">Recover Password</h4>
+                    <p class="text-muted mb-4">Enter your email address and we'll send you an email with instructions to
+                        reset your password.</p>
+
+                    <!-- form -->
+                    <form action="#">
+
+                        <div class="mb-3">
+                            <label for="emailaddress" class="form-label">Email address</label>
+                            <input class="form-control" type="email" id="emailaddress" required=""
+                                placeholder="Enter your email">
+                        </div>
+
+                        <div class="d-grid text-center">
+                            <button class="btn btn-primary waves-effect waves-light" type="submit"> Reset Password
+                            </button>
+                        </div>
+
+                    </form>
+                    <!-- end form-->
+
+                    <!-- Footer-->
+                    <footer class="footer footer-alt">
+                        <p class="text-muted">Back to <a (click)="showLogin()" class="text-primary fw-medium ms-1">Log
+                                in</a></p>
+                    </footer>
+
+                </div>
+                <div class="card-body" *ngIf="signUp">
+                    <h4 *ngIf="loginSuccess">Signup Successfull</h4>
+                    <!-- title-->
+                    <h4 class="mt-0">Sign Up</h4>
+                    <p class="text-muted mb-4">Don't have an account? Create your own account, it takes less than a
+                        minute</p>
+
+                    <form action="#" [formGroup]="signUpForm" (ngSubmit)="onSignUpSubmit()">
+                        <div class="mb-2">
+                            <label for="fullname" class="form-label">Company Name<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="fullname" class="form-control" type="text" id="fullname"
+                                placeholder="Enter your name" required pattern="^\S.*$">
+                            <div *ngIf="signupVal['fullname']?.invalid && (signupVal['fullname']?.dirty || signupVal['fullname']?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('fullname')?.errors?.['required']">Company is
+                                    required.</span>
+                                <span *ngIf="signUpForm.get('fullname')?.errors?.['minlength']">Minimum 2 character
+                                    required.</span>
+                                <span *ngIf="signUpForm.get('fullname')?.errors?.['pattern']">No special characters and
+                                    Blank spaces
+                                    allowed .</span>
+                            </div>
+                        </div>
+                        <!-- <div class="mb-2">
+                            <label for="userId" class="form-label">Company Id<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="userId" class="form-control" type="text" id="userId"
+                                placeholder="Enter your user id" required>
+                            <div *ngIf="signUpForm.get('userId')?.invalid && (signUpForm.get('userId')?.dirty || signUpForm.get('userId')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('userId')?.errors?.['required']">Company Id is
+                                    required.</span>
+                                <span *ngIf="signUpForm.get('userId')?.errors?.['pattern']">Only capital character and
+                                    number are allowed.</span>
+                            </div>
+                        </div> -->
+                        <!-- <div class="mb-2">
+                            <label for="password" class="form-label">Password<span
+                                    class="required text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                                <input formControlName="password" type="password" id="password" class="form-control"
+                                    placeholder="Enter your password">
+                                <div class="input-group-text" data-password="false">
+                                        <span class="password-eye"></span>
+                                    </div>
+                                <br>
+                            </div>
+                            <div *ngIf="signUpForm.get('password')?.invalid && (signUpForm.get('password')?.dirty || signUpForm.get('password')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('password')?.errors?.['required']">Password is
+                                    required.</span>
+                                <span *ngIf="signUpForm.get('password')?.errors?.['minlength']">Password should be at
+                                    least 6 characters long.</span>
+                                <span *ngIf="signUpForm.get('password')?.errors?.['pattern']">Password must include at
+                                    least 1 uppercase letter, 1 special character, and 1 number.</span>
+                            </div>
+                        </div> -->
+                        <div class="mb-2">
+                            <label for="emailaddress" class="form-label">Comany Email address<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="emailaddress" class="form-control" type="email" id="emailaddress"
+                                required placeholder="Enter your email">
+                            <div *ngIf="signUpForm.get('emailaddress')?.invalid && (signUpForm.get('emailaddress')?.dirty || signUpForm.get('emailaddress')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('emailaddress')?.errors?.['required']">Comany Email address
+                                    is
+                                    required.</span>
+                                <!-- <span *ngIf="signUpForm.get('emailaddress')?.errors?.['email']">Provide valid email address</span> -->
+                                <!-- <span *ngIf="signUpForm.get('emailaddress')?.errors?.['pattern']">Invalid email address
+                                    format. ( For ex. abc123@gmail.com )</span> -->
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="phone" class="form-label">Comany Contact No.<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="phone" class="form-control" type="text" id="phone"
+                                placeholder="Enter your mobile no" required maxlength="10">
+                            <div *ngIf="signUpForm.get('phone')?.invalid && (signUpForm.get('phone')?.dirty || signUpForm.get('emailaddress')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('phone')?.errors?.['required']">Comany contact number is
+                                    required.</span>
+                                <span *ngIf="signUpForm.get('phone')?.errors?.['pattern']">Please enter a valid 10-digit
+                                    phone number.</span>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="address" class="form-label">Company Address<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="address" class="form-control" type="text" id="address"
+                                placeholder="Enter your name" required pattern="^\S.*$">
+                            <div *ngIf="signupVal['address']?.invalid && (signupVal['address']?.dirty || signupVal['address']?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('address')?.errors?.['required']">Company is
+                                    required.</span>
+                                <span *ngIf="signUpForm.get('address')?.errors?.['minlength']">Minimum 4 character
+                                    required.</span>
+                                <span *ngIf="signUpForm.get('address')?.errors?.['pattern']">No special characters and
+                                    Blank spaces
+                                    allowed .</span>
+                            </div>
+                        </div>
+                        <!-- <div class="mb-2">
+                            <label for="gender" class="form-label">Gender<span
+                                    class="required text-danger">*</span></label>
+                            <select id="gender" name="gender" formControlName="gender" class="form-control"
+                                placeholder="Select Gender">
+                                <option value="">Select Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div *ngIf="signUpForm.get('gender')?.invalid && (signUpForm.get('gender')?.dirty || signUpForm.get('gender')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('gender')?.errors?.['required']">Gender is required.</span>
+                            </div>
+                        </div> -->
+                        <!-- <div class="form-group">
+                            <label for="role" class="form-label">Role<span class="required text-danger">*</span></label>
+                            <select id="role" name="role" formControlName="role" class="form-control"
+                                placeholder="Select Role">
+                                <option value="">Select Role</option>
+                                <option value="Admin">Admin</option>
+                                <option value="Employee">Employee</option>
+                            </select>
+                            <div *ngIf="signUpForm.get('role')?.invalid && (signUpForm.get('role')?.dirty || signUpForm.get('role')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('role')?.errors?.['required']">Role is required.</span>
+                            </div>
+                        </div> <br> -->
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="checkbox-signup" id="checkbox"
+                                    name="checkbox" formControlName="checkbox">
+                                <label class="form-check-label" for="checkbox-signup">
+                                    I accept <a (click)="viewTermsAndConditions()" class="text-bold">Terms and
+                                        Conditions</a>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="">
+                            <button class="btn btn-primary" type="submit"> Sign Up
+                            </button>
+                        </div>
+                    </form>
+
+                    <ng-template #content let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title text-danger" id="modal-basic-title">Turms And Conditions</h4>
+                            <button type="button" class="btn-close" aria-label="Close"
+                                (click)="d('Cross click')"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5> Terms and Conditions </h5>
+                            <br>
+                            General Site Usage
+                            <br>
+                            Last Revised: December 16, 2013
+                            <br>
+
+                            Welcome to www.lorem-ipsum.info. This site is provided as a service to our visitors and may
+                            be used for informational purposes only. Because the Terms and Conditions contain legal
+                            obligations, please read them carefully.
+                            <br>
+                            <h6> 1. YOUR AGREEMENT</h6>
+
+                            By using this Site, you agree to be bound by, and to comply with, these Terms and
+                            Conditions. If you do not agree to these Terms and Conditions, please do not use this site.
+                            <br>
+                            PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or otherwise
+                            alter these Terms and Conditions at any time. Unless otherwise indicated, amendments will
+                            become effective immediately. Please review these Terms and Conditions periodically. Your
+                            continued use of the Site following the posting of changes and/or modifications will
+                            constitute your acceptance of the revised Terms and Conditions and the reasonableness of
+                            these standards for notice of changes. For your information, this page was last updated as
+                            of the date at the top of these terms and conditions.
+                            <br>
+                            <h6> 2. PRIVACY </h6>
+
+                            Please review our Privacy Policy, which also governs your visit to this Site, to understand
+                            our practices.
+                        </div>
+                    </ng-template>
+                    <br>
+                    <!-- Footer-->
+                    <footer class="footer footer-alt">
+                        <p class="text-muted">Already have an account? <a (click)="showLogin()" href="#"
+                                class="text-primary fw-medium ms-1">Sign In</a></p>
+                    </footer>
+                </div> <!-- end .card-body -->
+
+
+                <div class="card-body" *ngIf="userSignUp">
+                    <h4 *ngIf="loginSuccess">Signup Successfull</h4>
+                    <h4 class="mt-0">User Sign Up</h4>
+                    <p class="text-muted mb-4">Don't have an account? Create your own account, it takes less than a
+                        minute</p>
+                    <form action="/" [formGroup]="userSignUpForm" (ngSubmit)="onUserSignUp()">
+                        <div class="mb-2">
+                            <label for="fullname" class="form-label">Name<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="fullname" class="form-control" type="text" id="fullname"
+                                placeholder="Enter your name" required pattern="^\S.*$">
+                            <div *ngIf="signupVal['fullname']?.invalid && (signupVal['fullname']?.dirty || signupVal['fullname']?.touched)"
+                                class="text-danger">
+                                <span *ngIf="userSignUpForm.get('fullname')?.errors?.['required']">Name is required.</span>
+                                <span *ngIf="userSignUpForm.get('fullname')?.errors?.['minlength']">Minimum 4 character
+                                    required.</span>
+
+                                <span *ngIf="userSignUpForm.get('fullname')?.errors?.['pattern']">No special characters and
+                                    Blank spaces
+                                    allowed .</span>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="userId" class="form-label">User Id<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="userId" class="form-control" type="text" id="userId"
+                                placeholder="Enter your user id" required>
+                            <div *ngIf="userSignUpForm.get('userId')?.invalid && (userSignUpForm.get('userId')?.dirty || userSignUpForm.get('userId')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="userSignUpForm.get('userId')?.errors?.['required']">User Id is required.</span>
+                                <span *ngIf="userSignUpForm.get('userId')?.errors?.['pattern']">Only capital character and
+                                    number are allowed.</span>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="password" class="form-label">Password<span
+                                    class="required text-danger">*</span></label>
+                            <div class="input-group input-group-merge">
+                                <input formControlName="password" type="password" id="password" class="form-control"
+                                    placeholder="Enter your password">
+                                <!-- <div class="input-group-text" data-password="false">
+                                        <span class="password-eye"></span>
+                                    </div> -->
+                                <br>
+                            </div>
+                            <div *ngIf="userSignUpForm.get('password')?.invalid && (userSignUpForm.get('password')?.dirty || userSignUpForm.get('password')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="userSignUpForm.get('password')?.errors?.['required']">Password is
+                                    required.</span>
+                                <span *ngIf="userSignUpForm.get('password')?.errors?.['minlength']">Password should be at
+                                    least 6 characters long.</span>
+                                <span *ngIf="userSignUpForm.get('password')?.errors?.['pattern']">Password must include at
+                                    least 1 uppercase letter, 1 special character, and 1 number.</span>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="emailaddress" class="form-label">Email address<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="emailaddress" class="form-control" type="email" id="emailaddress"
+                                required placeholder="Enter your email">
+                            <div *ngIf="userSignUpForm.get('emailaddress')?.invalid && (userSignUpForm.get('emailaddress')?.dirty || userSignUpForm.get('emailaddress')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="userSignUpForm.get('emailaddress')?.errors?.['required']">Email address is
+                                    required.</span>
+                                <!-- <span *ngIf="signUpForm.get('emailaddress')?.errors?.['email']">Provide valid email address</span> -->
+                                <!-- <span *ngIf="signUpForm.get('emailaddress')?.errors?.['pattern']">Invalid email address
+                                    format. ( For ex. abc123@gmail.com )</span> -->
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="phone" class="form-label">Mobile No.<span
+                                    class="required text-danger">*</span></label>
+                            <input formControlName="phone" class="form-control" type="text" id="phone"
+                                placeholder="Enter your mobile no" required maxlength="10">
+                            <div *ngIf="signUpForm.get('phone')?.invalid && (userSignUpForm.get('phone')?.dirty || userSignUpForm.get('emailaddress')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="userSignUpForm.get('phone')?.errors?.['required']">Phone number is
+                                    required.</span>
+                                <span *ngIf="userSignUpForm.get('phone')?.errors?.['pattern']">Please enter a valid 10-digit
+                                    phone number.</span>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="gender" class="form-label">Gender<span
+                                    class="required text-danger">*</span></label>
+                            <select id="gender" name="gender" formControlName="gender" class="form-control"
+                                placeholder="Select Gender">
+                                <option value="">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                            <div *ngIf="userSignUpForm.get('gender')?.invalid && (userSignUpForm.get('gender')?.dirty || userSignUpForm.get('gender')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('gender')?.errors?.['required']">Gender is required.</span>
+                            </div>
+                        </div>
+
+                        <!-- <div class="mb-2">
+                            <label for="comanyName" class="form-label">Select Company<span
+                                    class="required text-danger">*</span></label>
+                            <select id="company" class="form-control" name="company" formControlName="companyId"
+                                placeholder="Select Company">
+                                <option disabled selected>Select Company</option>
+                                <option *ngFor="let company of companies" [ngValue]="company['companyName']">{{
+                                    company.companyName
+                                    }}</option>
+                            </select>
+                            [ngValue]="null"
+                            <div style="text-align: center;" *ngIf="userSignUpForm.controls['companyName'].value"
+                                class="form-control div-item">
+                                <label>Selected Company Name: {{ userSignUpForm.controls['companyName'].value }}</label>
+                            </div>
+                        </div> -->
+
+                        <div class="mb-2">
+                            <label for="companyName" class="form-label">Select Company<span class="required text-danger">*</span></label>
+                            <select id="company" class="form-control" name="company" formControlName="companyId" placeholder="Select Company">
+                              <option disabled selected>Select Company</option>
+                              <option *ngFor="let company of companies" [ngValue]="company['companyName']">{{ company.companyName }}</option>
+                            </select>
+                          
+                            <div style="text-align: center;" *ngIf="userSignUpForm.controls['companyId'].value" class="form-control div-item">
+                              <label>Selected Company Name: {{ userSignUpForm.controls['companyId'].value }}</label>
+                            </div>
+                          </div>
+
+                        <div class="form-group">
+                            <label for="role" class="form-label">Role<span class="required text-danger">*</span></label>
+                            <select id="role" name="role" formControlName="role" class="form-control"
+                                placeholder="Select Role">
+                                <option value="">Select Role</option>
+                                <!-- <option value="ADMIN">Admin</option> -->
+                                <option value="USER">User</option>
+                            </select>
+                            <div *ngIf="signUpForm.get('role')?.invalid && (signUpForm.get('role')?.dirty || signUpForm.get('role')?.touched)"
+                                class="text-danger">
+                                <span *ngIf="signUpForm.get('role')?.errors?.['required']">Role is required.</span>
+                            </div>
+                        </div>
+                        <br>
+
+                        <!-- View Checkbox -->
+                        <!-- <label for="role" class="form-label">Permissions</label>
+                        <div class="form-check">
+                            <input formControlName="viewCheckbox" class="form-check-input" type="checkbox" id="viewCheckbox">
+                            <label class="form-check-label" for="viewCheckbox">View</label>
+                        </div>
+                        <br> -->
+
+                        <!-- Upload Checkbox -->
+                        <!-- <div class="form-check">
+                            <input formControlName="uploadCheckbox" class="form-check-input" type="checkbox" id="uploadCheckbox">
+                            <label class="form-check-label" for="uploadCheckbox">Upload</label>
+                        </div>
+                        <br> -->
+
+                        <!-- Download Checkbox -->
+                        <!-- <div class="form-check">
+                            <input formControlName="downloadCheckbox" class="form-check-input" type="checkbox" id="downloadCheckbox">
+                            <label class="form-check-label" for="downloadCheckbox">Download</label>
+                        </div>
+                        <br> -->
+                        <!-- <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="checkbox-signup" id="checkbox"
+                                    name="checkbox" formControlName="checkbox">
+                                <label class="form-check-label" for="checkbox-signup">
+                                    I accept <a (click)="viewTermsAndConditions()" class="text-bold">Terms and
+                                        Conditions</a>
+                                </label>
+                            </div>
+                        </div> -->
+                        <div class="">
+                            <button class="btn btn-primary" type="submit"> Register</button>
+                        </div>
+                    </form>
+                    <ng-template #content let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title text-danger" id="modal-basic-title">Turms And Conditions</h4>
+                            <button type="button" class="btn-close" aria-label="Close"
+                                (click)="d('Cross click')"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h5> Terms and Conditions </h5>
+                            <br>
+                            General Site Usage
+                            <br>
+                            Last Revised: December 16, 2013
+                            <br>
+
+                            Welcome to www.lorem-ipsum.info. This site is provided as a service to our visitors and may
+                            be used for informational purposes only. Because the Terms and Conditions contain legal
+                            obligations, please read them carefully.
+                            <br>
+                            <h6> 1. YOUR AGREEMENT</h6>
+
+                            By using this Site, you agree to be bound by, and to comply with, these Terms and
+                            Conditions. If you do not agree to these Terms and Conditions, please do not use this site.
+                            <br>
+                            PLEASE NOTE: We reserve the right, at our sole discretion, to change, modify or otherwise
+                            alter these Terms and Conditions at any time. Unless otherwise indicated, amendments will
+                            become effective immediately. Please review these Terms and Conditions periodically. Your
+                            continued use of the Site following the posting of changes and/or modifications will
+                            constitute your acceptance of the revised Terms and Conditions and the reasonableness of
+                            these standards for notice of changes. For your information, this page was last updated as
+                            of the date at the top of these terms and conditions.
+                            <br>
+                            <h6> 2. PRIVACY </h6>
+
+                            Please review our Privacy Policy, which also governs your visit to this Site, to understand
+                            our practices.
+                        </div>
+                    </ng-template>
+                    <br>
+                    <!-- Footer-->
+                    <footer class="footer footer-alt">
+                        <p class="text-muted">Already have an account? <a (click)="showLogin()" href="#"
+                                class="text-primary fw-medium ms-1">Sign In</a></p>
+                    </footer>
+                </div>
+
+
+
+            </div> <!-- end .align-items-center.d-flex.h-100-->
+        </div>
+        <!-- end auth-fluid-form-box-->
+    </div>
+    <!-- end auth-fluid-->
+
+</div>

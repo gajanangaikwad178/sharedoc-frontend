@@ -1,0 +1,400 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Personal Details</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Personal Details</a></li>
+                        <li class="breadcrumb-item active"> Personal Details Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+
+
+                    <!-- <ul class="nav nav-tabs row">
+                        <li class="nav-item col-2">
+                            <a class="nav-link" (click)="showTab('tab1')" [ngClass]="{'active': activeTab === 'tab1'}">
+                                Personal Details</a>
+                        </li>
+                        <li class="nav-item col-2">
+                            <a class="nav-link" (click)="showTab('tab2')" [class.active]="activeTab === 'tab2'">
+                                Education Details</a>
+                        </li>
+                        <li class="nav-item col-2">
+                            <a class="nav-link" (click)="showTab('tab3')" [class.active]="activeTab === 'tab3'">
+                             Job Details ㅤㅤ </a>
+                        </li>
+                        <li class="nav-item col-2">
+                            <a class="nav-link" (click)="showTab('tab4')" [class.active]="activeTab === 'tab4'">
+                                     Calendar ㅤㅤ</a>
+                        </li>
+                        <li class="nav-item col-2">
+                            <a class="nav-link" (click)="showTab('tab5')" [class.active]="activeTab === 'tab5'">
+                               &nbsp; Year    Calendar</a>
+                        </li>
+                    </ul> -->
+
+                    <ul class="nav nav-pills nav-justified form-wizard-header">
+                        <li class="nav-item">
+                            <a href="#Personal-Details" data-bs-toggle="tab" data-toggle="tab" class="nav-link" (click)="showTab('tab1')" [ngClass]="{'active': activeTab === 'tab1'}">
+                                <!-- <span class="number">1</span> -->
+                                <span class="d-none d-sm-inline">Personal Details</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Education-Details" data-bs-toggle="tab" data-toggle="tab" class="nav-link" (click)="showTab('tab2')" [class.active]="activeTab === 'tab2'">
+                                <!-- <span class="number">2</span> -->
+                                <span class="d-none d-sm-inline">Education Details</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Job-Details" data-bs-toggle="tab" data-toggle="tab" class="nav-link" (click)="showTab('tab3')" [class.active]="activeTab === 'tab3'">
+                                <!-- <span class="number">3</span> -->
+                                <span class="d-none d-sm-inline">Job Details</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Calendar" data-bs-toggle="tab" data-toggle="tab" class="nav-link" (click)="showTab('tab4')" [class.active]="activeTab === 'tab4'">
+                                <!-- <span class="number">3</span> -->
+                                <span class="d-none d-sm-inline">Calendar</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#Year-Calendar" data-bs-toggle="tab" data-toggle="tab" class="nav-link" (click)="showTab('tab5')" [class.active]="activeTab === 'tab5'">
+                                <!-- <span class="number">3</span> -->
+                                <span class="d-none d-sm-inline">Year Calendar</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div *ngIf="activeTab === 'tab1'">
+                            <div class="container-fluid">
+                                <form [formGroup]="employeeForm">
+                                    <div class="mb-2">
+                                        <label for="name" class="form-label">Your Name:<span
+                                                class="text-danger">*</span></label>
+                                        <input type="text" formControlName="name" required class="form-control">
+                                        <span class="text-danger" *ngIf="
+                             profileVal['name'].touched &&
+                             profileVal['name'].invalid
+                             ">
+                                            <span *ngIf="profileVal['name'].hasError('required')">Name is
+                                                required</span>
+                                            <span *ngIf="profileVal['name'].hasError('minlength')">Name must be at least
+                                                4 characters
+                                            </span>
+                                            <span *ngIf="profileVal['name'].hasError('pattern')">Name contains invalid
+                                                characters </span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="email" class="form-label">Email:<span
+                                                class="text-danger">*</span></label>
+                                        <input type="email" id="email" formControlName="email" required
+                                            class="form-control">
+                                        <span class="text-danger" *ngIf="
+                       profileVal['email'].touched &&
+                       profileVal['email'].invalid
+                       ">
+                                            <span *ngIf="profileVal['email'].hasError('required')">Email is
+                                                required</span>
+                                            <span *ngIf="profileVal['email'].hasError('pattern')">Enter valid
+                                                email</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="phone" class="form-label">Mobile Number:<span
+                                                class="text-danger">*</span></label>
+                                        <input type="phone" id="phone" formControlName="phone" required
+                                            class="form-control">
+                                        <span class="text-danger" *ngIf="
+                       profileVal['phone'].touched &&
+                       profileVal['phone'].invalid
+                       ">
+                                            <span *ngIf="profileVal['phone'].hasError('required')">Contact number is
+                                                required</span>
+                                            <span *ngIf="profileVal['phone'].hasError('pattern')">Enter valid
+                                                numbers</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="dob" class="form-label">Date of Birth:<span
+                                                class="text-danger">*</span></label>
+                                        <input type="date" id="dob" formControlName="dob" required class="form-control">
+                                        <span class="text-danger" *ngIf="
+                       profileVal['dob'].touched &&
+                       profileVal['dob'].invalid
+                       ">
+                                            <span *ngIf="profileVal['dob'].hasError('required')">Date of birth is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="gender" class="form-label">Gender:<span
+                                                class="text-danger">*</span></label>
+                                        <select id="gender" formControlName="gender" required required
+                                            class="form-control">
+                                            <option value="" disabled>Select gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                        <span class="text-danger" *ngIf="
+                       profileVal['gender'].touched &&
+                       profileVal['gender'].invalid
+                       ">
+                                            <span *ngIf="profileVal['gender'].hasError('required')"> gender is
+                                                required</span>
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="bloodGroup" class="form-label">Blood Group:</label>
+                                        <select id="bloodGroup" ame="bloodGroup" formControlName="bloodGroup" required
+                                            class="form-control">
+                                            <option value="" disabled>Select Blood Group</option>
+                                            <option value="A+">A+</option>
+                                            <option value="A-">A-</option>
+                                            <option value="B+">B+</option>
+                                            <option value="B-">B-</option>
+                                            <option value="AB+">AB+</option>
+                                            <option value="AB-">AB-</option>
+                                            <option value="O+">O+</option>
+                                            <option value="O-">O-</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="maritalStatus" class="form-label">Marital Status:</label>
+                                        <select name="maritalStatus" id="maritalStatus" formControlName="maritalStatus"
+                                            class="form-control">
+                                            <option value="" disabled>Select Marital Status</option>
+                                            <option value="Single">Single</option>
+                                            <option value="Married">Married</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <label for="address" class="form-label">Address:</label>
+                                        <textarea rows="2" cols="50" name="comment" formControlName="address"
+                                            class="form-control"></textarea>
+                                    </div>
+
+                                    <div class="mb-2 row">
+                                        <div class="col-8 offset-5">
+                                            <button type="button" class="btn btn-primary waves-effect waves-light me-1"
+                                                
+                                                (click)="showTab('tab2')">Next</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div *ngIf="activeTab === 'tab2'">
+                            <div class="container-fluid">
+
+
+
+
+
+                                <!-- <h1>User Educational Details</h1> -->
+                                <form [formGroup]="orderForm">
+
+                                    <div class="table-responsive mt-3">
+                                        <table class="table table-centered table-nowrap table-borderless table-sm">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th scope="col">Qualification</th>
+                                                    <th scope="col">University Name</th>
+                                                    <th scope="col">Start Date</th>
+                                                    <th scope="col">End Date</th>
+                                                    <th scope="col">Percentage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody [ngClass]="{'hidden': isEducationalDetails}">
+                                                <tr>
+                                                    <td>{{ sscname1 }}</td>
+                                                    <td>{{ sscSchoolName1 }}</td>
+                                                    <td>{{ sscStartDate1 }}</td>
+                                                    <td>{{ sscEndDate1 }}</td>
+                                                    <td>{{ sscPercentage1 }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ hscName1 }}</td>
+                                                    <td>{{ hscSchoolName1 }}</td>
+                                                    <td>{{ hscStartDate1 }}</td>
+                                                    <td>{{ hscEndDate1 }}</td>
+                                                    <td>{{ hscPercentage1 }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ ugGraduation1 }}</td>
+                                                    <td>{{ ugUniversityName1 }}</td>
+                                                    <td>{{ ugStartDate1 }}</td>
+                                                    <td>{{ ugEndDate1 }}</td>
+                                                    <td>{{ ugPercentage1 }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ pgName1 }}</td>
+                                                    <td>{{ pgUniversityName1 }}</td>
+                                                    <td>{{ pgStartDate1 }}</td>
+                                                    <td>{{ pgEndDate1 }}</td>
+                                                    <td>{{ pgPercentage1 }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{{ diplomaName1 }}</td>
+                                                    <td>{{ diplomaUniversityName1 }}</td>
+                                                    <td>{{ diplomaStartDate1 }}</td>
+                                                    <td>{{ diplomaEndDate1 }}</td>
+                                                    <td>{{ diplomaPercentage1 }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <hr>
+                                    </div>
+
+                                    <h4 class="header-title">Education Details Form</h4>
+                                    <br>
+                                    <div formArrayName="items">
+                                        <div *ngFor="let item of itemsFormArray.controls; let i = index"
+                                            [formGroupName]="i">
+                                            <div class="md-2">
+                                                <label for="standard" class="form-label">Qualification:</label>
+                                                <select id="standard" formControlName="standard" class="form-control">
+                                                    <option value="" disabled>Select degree Name</option>
+                                                    <option value="SSC">SSC</option>
+                                                    <option value="HSC">HSC</option>
+                                                    <option value="UgGraduation">UG Graduation</option>
+                                                    <option value="PgGraduation">PG Graduation</option>
+                                                    <option value="Diploma">Diploma</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="md-2">
+                                                <label for="universityName" class="form-label">College/
+                                                    University:</label>
+                                                <input type="text" id="universityName" formControlName="universityName"
+                                                    class="form-control">
+                                            </div>
+
+                                            <div class="md-4">
+                                                <label for="startDate" class="form-label">Start Date:</label>
+                                                <input type="date" id="startDate" formControlName="startDate"
+                                                    class="form-control">
+                                            </div>
+
+                                            <div class="md-4">
+                                                <label for="endDate" class="form-label">End Date:</label>
+                                                <input type="date" id="endDate" formControlName="endDate"
+                                                    class="form-control">
+                                            </div>
+
+                                            <div class="md-4">
+                                                <label for="percentage" class="form-label">Percentage %:</label>
+                                                <input type="text" id="percentage" formControlName="percentage"
+                                                    class="form-control">
+                                            </div>
+                                            <br>
+                                            <div class="mb-2 row">
+                                                <div class="col-8 offset-4">
+
+                                                    <button class="btn btn-primary waves-effect waves-light me-1"
+                                                        type="button" (click)="addItem()">Add</button>
+
+                                                    <button type="button"
+                                                        class="btn btn-secondary waves-effect remove me-1"
+                                                        (click)="removeGroup(i)">
+                                                        Remove
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-secondary waves-effect me-1"
+                                                        (click)="showTab('tab1')">
+                                                        Back
+                                                    </button>
+
+                                                    <button type="button" class="btn btn-primary waves-effect "
+                                                        (click)="showTab('tab3')">
+                                                        Next
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div *ngIf="activeTab === 'tab3'">
+                            <div class="container-fluid">
+                                <!-- <h4>Employeee Job Details</h4> -->
+                                <form [formGroup]="jobForm">
+                                    <div class="md-2">
+                                        <label for="companyName" class="form-label">Company Name</label>
+                                        <input type="text" formControlName="companyName" class="form-control">
+                                    </div>
+
+                                    <div class="md-2">
+                                        <label for="companyDesignation" class="form-label">Designation</label>
+                                        <input type="text" formControlName="companyDesignation" class="form-control">
+                                    </div>
+
+                                    <div class="md-2">
+                                        <label for="companyFromDate" class="form-label">From Date</label>
+                                        <input type="date" id="fromDate" formControlName="companyFromDate"
+                                            class="form-control">
+                                    </div>
+
+                                    <div class="md-2">
+                                        <label for="companyTodate" class="form-label">To Date</label>
+                                        <input type="date" id="companyTodate" formControlName="companyTodate"
+                                            class="form-control">
+                                    </div>
+                                    <br>
+                                    <div class="mb-2 row">
+                                        <div class="col-8 offset-5">
+                                            <button class="btn btn-secondary waves-effect waves-light me-1"
+                                                (click)="showTab('tab2')">
+                                                Back</button>
+                                            <button type="button" value="Submit" class="btn btn-primary"
+                                                (click)="submit(employeeForm.value, jobForm.value)">
+                                                Submit</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- <button type="button" class="btn btn-secondary"
+                                        (click)="showTab('tab2')">Back</button>
+                                    <button type="button" value="Submit"
+                                        (click)="submit(employeeForm.value, jobForm.value)">Submit</button> -->
+                                </form>
+                            </div>
+                        </div>
+
+                        <div *ngIf="activeTab === 'tab4'">
+       <app-calendar></app-calendar>
+    </div>
+
+                        <div *ngIf="activeTab === 'tab5'">
+        <app-employee-calendar></app-employee-calendar>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

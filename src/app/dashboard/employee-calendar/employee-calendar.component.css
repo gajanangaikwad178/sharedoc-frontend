@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container {
+    overflow: hidden;
+}
+.year {
+    font-size: 15px;
+    color: rgb(235, 66, 218);
+    padding: 4px;
+    background-color: beige;
+}
+.year .fa {
+    font-size: 20px;
+}
+.month,
+.headerDays {
+    font-size: 12px;
+    background-color: darkorange;
+}
+.days {
+    font-size: 10px;
+    background-color: #FF6666;
+}
+td,
+th {
+    padding: 4px;
+    width: 1%;
+}
+.colorCode {
+    font-size: 15px;
+    font-weight: bold;
+}
+.square {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 15px;
+}
+.holi-we {
+    background-color: #CCE5FF;
+}
+.present {
+    background-color: #99FF99;
+}
+.absent {
+    background-color: #FF6666;
+}
+.holi-govt {
+    background-color:  #ECEC90;
+}
+.li {
+    cursor: pointer;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Form 16</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Form 16</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <!-- <h4 class="header-title">Form 16</h4> -->
+                    <form action="#" class="parsley-examples">
+                        <div class="mb-2">
+                            <label>Select year<span class="text-danger">*</span></label>
+                            <select #year (change)="isYearSelected = year.value !== null"
+                                class="form-control forminput">
+                                <option [value]="null" disabled selected>Select year</option>
+                                <option *ngFor="let year of years" [value]="year">{{ year }} - {{year+1}}</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-2 row">
+                            <div class="col-8 offset-5">
+                                <button class="btn btn-primary waves-effect waves-light me-1"
+                                    (click)="viewPdf(userId, year.value)" [disabled]="!isYearSelected"><i
+                                        class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-primary" (click)="downloadexcelForm16(userId, year.value)"
+                                    [disabled]="!isYearSelected">
+                                    <i class="fas fa-download"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div *ngIf="showViewer">
+                <div style="width: 900px; height: 800px">
+                    <ngx-extended-pdf-viewer [src]="pdfUrlx"
+                        [useBrowserLocale]="true"></ngx-extended-pdf-viewer>
+                </div>
+            </div>
+        </div>

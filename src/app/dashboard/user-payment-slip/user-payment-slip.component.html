@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Payment Slip</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">Payment Slip</a></li>
+                        <li class="breadcrumb-item active">Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Check here payment slip</h4>
+                    <div>
+                        <div class="mb-2">
+                            <label for="selectMonth" class="form-label">Select Month<span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control" (change)="selectMonth($event)">
+                                <option *ngFor="let month of months; let i= index" [value]="i+1">{{ month }}</option>
+                            </select>
+                        </div>
+                        <div class="mb-2">
+                            <label for="selectYear" class="form-label">Select Year<span
+                                    class="text-danger">*</span></label>
+                            <select class="form-control" (change)="selectYear($event)">
+                                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                            </select>
+                        </div>
+
+
+                        <div class="mb-2 row">
+                            <div class="col-8 offset-5">
+                                <button (click)="downloadPaymentSlip()"
+                                class="btn btn-primary waves-effect waves-light me-1" type="submit">
+                                Submit
+                            </button>
+                            <button (click)="ViewPdf()" [disabled]="paymentStatus"
+                                class="btn btn-secondary waves-effect">
+                                View
+                            </button>
+                            </div>
+                            <div *ngIf="showViewer">
+                                <div style="width: 900px; height: 800px">
+                                    <ngx-extended-pdf-viewer [src]="filePath"
+                                        [useBrowserLocale]="true"></ngx-extended-pdf-viewer>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

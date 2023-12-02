@@ -1,0 +1,147 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+  <!-- start page title -->
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+        <h4 class="page-title">Upload Investment Declaration</h4>
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+            <li class="breadcrumb-item"><a href="javascript: void(0);">Upload Investment Declaration</a>
+            </li>
+            <li class="breadcrumb-item active">Investment Declaration</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end page title -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <!-- cta -->
+              <div class="row">
+
+
+                <div class="custom-accordion">
+                  <div class="mt-4">
+                    <!-- <h5 class="position-relative mb-0"><a href="#taskcollapse1" class="text-dark d-block"
+                        data-bs-toggle="collapse">Upload Investment
+                        Declaration
+                      </a></h5> -->
+                    <div class="collapse show" id="taskcollapse1">
+                      <form name="insvestmentdecleration" [formGroup]="insvestmentdecleration">
+                        <div class="table-responsive mt-3">
+                          <table class="table table-centered table-nowrap table-borderless table-sm">
+                            <thead class="table-light">
+                              <tr class="">
+                                <th scope="col">Investment Declaration</th>
+                                <th scope="col">Action</th>
+                                <!-- <th scope="col">Action</th> -->
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div class="file-input-container">
+                                    <input type="file" (change)="convertToBase64($event)" class="custom-file-input"
+                                      formControlName="file" class="form-control">
+
+                                    <div *ngIf="myFile">
+                                      <textarea [(ngModel)]="myFile" class="form-control"></textarea>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <button type="submit" class="btn btn-primary"
+                                    (click)="submit(insvestmentdecleration.value)"><i class="fa fa-upload"
+                                      aria-hidden="true"></i></button>
+                                  <span *ngIf="errorMessage" class="error-message">{{ errorMessage }}</span> &nbsp;
+
+                                  <button class="btn btn-primary" (click)="deleteInvestmentDecaration()"><i
+                                      class="fas fa-trash"></i></button>
+                                </td>
+
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+
+                      </form>
+
+                      <div class="custom-accordion">
+                        <div class="mt-4">
+                          <h5 class="position-relative mb-0"><a href="#taskcollapse1" class="text-dark d-block"
+                              data-bs-toggle="collapse">Employee List
+                            </a></h5>
+                          <div class="collapse show" id="taskcollapse1">
+                            <!-- <div class="search-hero search-bar"> -->
+                            <br>
+                            <input class="form-control" type="text" name="search" [(ngModel)]="filterText"
+                              autocomplete="off" placeholder="&#61442; Start searching for an employee by name">
+                            <!-- </div> -->
+                            <form name="insvestmentdecleration" [formGroup]="insvestmentdecleration">
+                              <div class="table-responsive mt-3">
+                                <table class="table table-centered table-nowrap table-borderless table-sm">
+                                  <thead class="table-light">
+                                    <tr>
+                                      <th>Sr.No</th>
+                                      <th>UserId</th>
+                                      <th>Name</th>
+                                      <th>Action</th>
+
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <tr *ngFor="let user of filteredUsersByname; let i = index">
+                                      <td>{{ i+1 }}</td>
+                                      <td>{{ user.userId }}</td>
+                                      <td>{{ user.name}}</td>
+                                      <td>
+                                        <button class="btn btn-primary" (click)="viewFile(user)"><i
+                                            class="fas fa-eye"></i></button>
+                                        &nbsp;
+                                        <button class="btn btn-primary"
+                                          (click)="deleteUserInvestmentDeclaration(user)"><i
+                                            class="fas fa-trash"></i></button>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+
+                                <div *ngIf="selectedUser && selectedUser.filePath">
+                                  <table #container id="TheTablex" class="sjs-table">
+                                    <thead>
+                                      <tr>
+                                        <th *ngFor="let headValuex of headDatax">{{ headValuex }}</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor="let rowx of datax">
+                                        <td *ngFor="let cell of rowx">{{ cell }}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

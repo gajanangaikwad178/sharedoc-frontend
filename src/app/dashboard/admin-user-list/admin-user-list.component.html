@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">User List</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item active"></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- cta -->
+                            <div class="row">
+                                <div class="custom-accordion">
+                                    <div class="mt-4">
+                                        <h4 class="position-relative mb-0"><a href="#taskcollapse1"
+                                                class="text-dark d-block" data-bs-toggle="collapse">User list
+                                            </a></h4>
+                                        <div class="collapse show" id="taskcollapse1">
+                                            <form name="adminPermission" >
+                                                <div class="table-responsive mt-3">
+                                                    <table
+                                                        class="table table-centered table-nowrap table-borderless table-sm">
+                                                        <thead class="table-light">
+                                                            <tr class="">
+                                                                <th scope="col">Sr.No.</th>
+                                                                <th scope="col">User_Id</th>
+                                                                <th scope="col">User_Name</th>
+                                                                <th scope="col">View</th>
+                                                                <th scope="col">Upload</th>
+                                                                <th scope="col">Download</th>
+                                                                <th scope="col">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <ng-container *ngFor="let user of users; let i = index">
+                                                                <tr>
+                                                                    <td>{{ i + 1 }}</td>
+                                                                    <td>{{ user.userId }}</td>
+                                                                    <td>{{ user.name }}</td>
+                                                                    <td>
+                                                                        <input type="checkbox" [checked]="user.view" (change)="toggleViewPermission(user, user.view)">
+                                                                      </td>
+                                                                      <td>
+                                                                        <input type="checkbox" [checked]="user.upload" (change)="toggleUploadPermission(user, user.upload)">
+                                                                      </td>
+                                                                      <td>
+                                                                        <input type="checkbox" [checked]="user.download" (change)="toggleDownloadPermission(user, user.download)">
+                                                                      </td>
+                                                                    <td>
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            (click)="submit(adminPermission.value, user)">
+                                                                            Update</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-container>
+                                                        </tbody>
+                                                    </table>
+                                                
+</div>

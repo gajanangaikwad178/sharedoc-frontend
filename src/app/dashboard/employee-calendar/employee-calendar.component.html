@@ -1,0 +1,61 @@
+<div class="container-fluid">
+    
+        <div class="row">
+            <div class="col-lg-12">​
+                <div class="card">
+                    <div class="card-body">
+                        <!-- <h4 class="header-title">Employee Calendar</h4> -->
+                        <div class="container mt-2">
+                            <div class="row">
+                                <table class="table table-responsive table-bordered" width="100%">
+                                    <thead>
+                                        <tr class="text-sm-center">
+                                            <th colspan="100%" class="year">
+                                                <i class="fas fa-caret-square-left p-1 mr-2 text-primary cursor-pointer" aria-hidden="true"
+                                                    (click)="prevYear()"></i>
+                                                <span class="m-2 pl-2 pr-2 border border-secondary bg-warning currentYear">{{ currentYear
+                                                    }}</span>
+                                                <i class="fas fa-caret-square-right p-1 ml-2 text-primary cursor-pointer" aria-hidden="true"
+                                                    (click)="nextYear()"></i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th class="month text-center p-1">M\D</th>
+                                            <td class="headerDays p-1 text-center" *ngFor="let date of datesArr">{{date | number:'2.0'}}</td>
+                                        </tr>
+                                        <tr *ngFor="let month of allMonths">
+                                            <th class="month p-1">{{month.name}}</th>
+                                            <td class="days p-1 text-center" *ngFor="let day of month.days" (click)="toggleList($event)"
+                                                [ngStyle]="dayColor(day)">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row mt-4 justify-content-center">
+                                <div class="colorCode d-flex col-md-6 justify-content-around">
+                                    <div class="weekEnds mr-4">
+                                        <div class="square holi-we mt-1"></div>
+                                        <span>Weekends</span>
+                                    </div>
+                                    <div class="govtHday">
+                                        <div class="square holi-govt mt-1"></div>
+                                        <span>Govt. Holliday</span>
+                                    </div>
+                                    <div class="Present">
+                                        <div class="square present mt-1"></div>
+                                        <span>Present</span>
+                                    </div>
+                                    <div class="Absent">
+                                        <div class="square absent mt-1"></div>
+                                        <span>Absent</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </div>

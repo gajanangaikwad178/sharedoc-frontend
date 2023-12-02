@@ -1,0 +1,103 @@
+<div class="container-fluid">
+
+    <!-- start page title -->
+    <div class="row">
+        <div class="col-12">
+            <div class="page-title-box">
+                <h4 class="page-title">Admin List</h4>
+                <div class="page-title-right">
+                    <ol class="breadcrumb m-0">
+                        <li class="breadcrumb-item active">Update Permission</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- cta -->
+                            <div class="row">
+                                <div class="custom-accordion">
+                                    <div class="mt-4">
+                                        <!-- <h4 class="position-relative mb-0"><a href="#taskcollapse1"
+                                                class="text-dark d-block" data-bs-toggle="collapse">Admin list
+                                            </a></h4> -->
+                                        <div class="collapse show" id="taskcollapse1">
+                                            <form [formGroup]="adminPermission">
+                                                <div class="table-responsive mt-3">
+                                                    <!-- <div class="space-between-inputs-and-table">
+                                                        <input type="text" class="search-inputs"
+                                                            placeholder="Search Employee Name" #searchString
+                                                            (input)="search(searchString.value,'name')" style= "width:20%"
+                                                            >
+                                                        <span style="margin: 0 10px;"></span>
+                                                        <input type="text" placeholder="Search User ID" #searchUserId
+                                                            (input)="search(searchUserId.value,'userID')"
+                                                            style= "width:15%">
+                                                    </div> -->
+
+                                                    <table
+                                                        class="table table-centered table-nowrap table-borderless table-sm">
+                                                        <thead class="table-light">
+                                                            <tr class="">
+                                                                <th scope="col">Sr.No.</th>
+                                                                <th scope="col">Admin_Name</th>
+                                                                <th scope="col">Admin_Id</th>
+                                                                <th scope="col">View</th>
+                                                                <th scope="col">Upload</th>
+                                                                <th scope="col">Download</th>
+                                                                <th scope="col">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                          
+                                                            <ng-container *ngFor="let user of users; let i = index">
+                                                                <tr>
+                                                                    <td>{{ i + 1 }}</td>
+                                                                    <td>{{ user.name }}</td>
+                                                                    <td>{{ user.userId }}</td>
+                                                                    
+                                                                    <!-- <td>
+                                                                        <input type="checkbox" formControlName="view" [checked]="user.view" (change)="toggleViewPermission(user, user.view)">
+                                                                      </td>
+                                                                      <td>
+                                                                        <input type="checkbox" formControlName="upload" [checked]="user.upload" (change)="toggleUploadPermission(user, user.upload)">
+                                                                      </td>
+                                                                      <td>
+                                                                        <input type="checkbox" formControlName="download" [checked]="user.download" (change)="toggleDownloadPermission(user, user.download)">
+                                                                      </td> -->
+                                                                      <td>
+                                                                        <input type="checkbox" [checked]="user.view" (change)="toggleViewPermission(user, user.view)"/>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" [checked]="user.upload" (change)="toggleUploadPermission(user, user.upload)"/>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="checkbox" [checked]="user.download" (change)="toggleDownloadPermission(user, user.download)"/>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button type="submit" class="btn btn-primary"
+                                                                            (click)="submit(adminPermission.value, user)">
+                                                                            Update</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </ng-container>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

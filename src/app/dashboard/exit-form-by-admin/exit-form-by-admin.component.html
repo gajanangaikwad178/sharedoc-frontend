@@ -1,0 +1,149 @@
+<!-- Start Content-->
+<div class="container-fluid">
+
+  <!-- start page title -->
+  <div class="row">
+    <div class="col-12">
+      <div class="page-title-box">
+        <h4 class="page-title">Exit Form</h4>
+        <div class="page-title-right">
+          <ol class="breadcrumb m-0">
+            <li class="breadcrumb-item"><a href="javascript: void(0);">HRMS</a></li>
+            <li class="breadcrumb-item"><a href="javascript: void(0);">Upload Exit Form</a>
+            </li>
+            <li class="breadcrumb-item active">Exit Form</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end page title -->
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <!-- cta -->
+              <div class="row">
+
+
+                <div class="custom-accordion">
+                  <div class="mt-4">
+                    <!-- <h5 class="position-relative mb-0"><a href="#taskcollapse1" class="text-dark d-block"
+                          data-bs-toggle="collapse">Exit Form
+                        </a></h5> -->
+                    <div class="collapse show" id="taskcollapse1">
+                      <form name="exitform" [formGroup]="exitform">
+                        <div class="table-responsive mt-3">
+                          <table class="table table-centered table-nowrap table-borderless table-sm">
+                            <thead class="table-light">
+                              <tr class="">
+                                <th scope="col">Exit form</th>
+                                <th scope="col">Action</th>
+                                <!-- <th scope="col">Action</th> -->
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <div class="file-input-container">
+                                    <input type="file" (change)="convertToBase64($event)" formControlName="file"
+                                      class="form-control">
+
+                                    <div *ngIf="myFile">
+                                      <textarea [(ngModel)]="myFile" class="form-control"></textarea>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td>
+                                  <button type="submit" class="btn btn-primary" (click)="submit(exitform.value)"><i
+                                      class="fa fa-upload" aria-hidden="true"></i></button>
+                                  <span *ngIf="errorMessage" class="error-message">{{ errorMessage }}</span> &nbsp;
+
+                                  <button class="btn btn-primary" (click)="deleteExitForm()"><i
+                                      class="fas fa-trash"></i></button>
+                                </td>
+
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </form>
+
+                      <div class="custom-accordion">
+                        <div class="mt-4">
+                          <h5 class="position-relative mb-0"><a href="#taskcollapse1" class="text-dark d-block"
+                              data-bs-toggle="collapse">Employee list
+                            </a></h5>
+                          <div class="collapse show" id="taskcollapse1">
+                            <br>
+                            <input class="form-control" type="text" name="search" [(ngModel)]="filterText"
+                              autocomplete="off" placeholder="&#61442; Start searching for an employee by name">
+
+                            <form [formGroup]="userData" name="userData">
+                              <div class="table-responsive mt-3">
+                                <table class="table table-centered table-nowrap table-borderless table-sm">
+                                  <thead class="table-light">
+                                    <tr>
+                                      <th>Sr.No</th>
+                                      <th>UserId</th>
+                                      <th>Name</th>
+                                      <th>Action</th>
+                                      <th>Exit Confirm</th>
+                                      <th>Last Working Date</th>
+                                      <th>Submit</th>
+
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <ng-container *ngFor="let user of filteredUsersByname; let i = index">
+                                      <tr>
+                                        <td>{{ i+1 }}</td>
+                                        <td>{{ user.userId }}</td>
+                                        <td>{{ user.name}}</td>
+                                        <td>
+                                          <button class="btn btn-primary" (click)="viewFile(user)"><i
+                                              class="fas fa-download"></i></button>
+                                          &nbsp;
+                                          <button class="btn btn-primary" (click)="deleteUserExitForm(user)"><i
+                                              class="fas fa-trash"></i></button>
+                                        </td>
+                                        <td>
+                                          <select  class="form-control" formControlName="selectedAction">
+                                            <option value="" disabled>Select Status</option>
+                                            <option value="approved">Approved</option>
+                                            <option value="reject">Reject</option>
+                                          </select>
+                                        </td>
+                                        <td>
+                                          <input class="form-control" type="date" id="lastWorkingDate" formControlName="lastWorkingDate">
+                                        </td>
+                                        <td>
+                                          <button type="submit" class="btn btn-primary" (click)="onSubmit(userData.value,user)"> <i
+                                              class="fas fa-upload"></i></button>
+                                        </td>
+                                      </tr>
+                                    </ng-container>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <!-- <div class="text-center mt-3">
+                                <button type="submit" class="btn btn-primary" (ngSubmit)="onSubmit()">Submit</button>
+                              </div> -->
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
